@@ -1,5 +1,174 @@
 # @ag.ds-next/docs
 
+## 0.18.0
+
+### Minor Changes
+
+- 2590b8778ff: patterns: Add ‘Selecting an option from a list’.
+- b5635a629fd: conditional-field-container: Update style to use a left border instead of a horizontal divider.
+
+  field: `<FieldContainer>`: Update style to support invalid fields within `<ConditionalFieldContainer>`.
+
+  grouped-fields: Update style to support invalid fields within `<ConditionalFieldContainer>`.
+
+- dd3c366a455: checkbox: Add `onFocus` as valid TypeScript prop.
+
+  docs: Add 'Responsive preview' page designed to view components and examples with selectable document widths. Add responsive preview link to documentation code snippets. Modify code snippet components with padding option.
+
+  header: Remove padding from preview examples.
+
+  radio: Add `onFocus` as valid TypeScript prop.
+
+- 45d54c8f8e3: docs: Update Getting Started guide to support Next.js.
+- de35d8cb112: foundations/accessibility: Add new Foundations > Accessibility content pages.
+
+### Patch Changes
+
+- f0142309238: docs: Add pattern documentation page 'Warn before leaving'.
+- 8e0945eda9b: docs: Update copyright to year 2025 in code snippets.
+
+  footer: Update copyright to year 2025 in docs.
+
+- 0055b768eee: docs: Add ’Ask users for dates and times’ pattern page.
+- 7cb232595ca: summary-list: Update docs with `VisuallyHidden` link and import reference.
+
+  table: Fix and lint code sample examples. Update docs with `VisuallyHidden` link and import reference.
+
+- bbb49667d74: accordion: Update colour section in docs.
+
+  ag-branding: Add colour section in docs.
+
+  autocomplete: Add colour section in docs.
+
+  avatar: Add colour section in docs.
+
+  breadcrumbs: Add colour section in docs.
+
+  button: Update colour section in docs.
+
+  call-to-action: Add colour section in docs.
+
+  callout: Update colour section in docs.
+
+  card: Update colour section in current and legacy docs.
+
+  checkbox: Add colour section in docs.
+
+  combobox: Add colour section in docs.
+
+  date-picker-next: Add colour section in docs.
+
+  date-picker: Add colour section in docs.
+
+  date-range-picker-next: Add colour section in docs.
+
+  date-range-picker: Add colour section in docs.
+
+  details: Add colour section in docs.
+
+  direction-link: Add colour section in docs.
+
+  divider-with-text: Update colour section in docs.
+
+  divider: Add colour section in docs.
+
+  docs: Add support for colour component support for code snippets in documentation.
+
+  dropdown-menu: Add colour section in docs.
+
+  feature-link-list: Add colour section in docs.
+
+  file-input: Add colour section in docs.
+
+  file-upload: Add colour section in docs.
+
+  filter-sidebar: Add colour section in docs.
+
+  footer: Add colour section in docs.
+
+  global-alert: Add colour section in docs.
+
+  grouped-fields: Add colour section in docs.
+
+  header: Add colour section in docs.
+
+  hero-banner: Add colour section in docs.
+
+  icon: Add colour section in docs.
+
+  indicator-dot: Add colour section in docs.
+
+  inpage-nav: Add colour section in docs.
+
+  link-list: Add colour section in docs.
+
+  main-nav: Add colour section in docs.
+
+  notification-badge: Add colour section in docs.
+
+  page-alert: Add colour section in docs.
+
+  pagination: Add colour section in docs.
+
+  password-input: Add colour section in docs.
+
+  progress-indicator: Add colour section in docs.
+
+  radio: Add colour section in docs.
+
+  search-box: Update colour section in docs.
+
+  search-input: Add colour section in docs.
+
+  section-alert: Update colour section in docs.
+
+  select: Add colour section in docs.
+
+  side-nav: Add colour section in docs.
+
+  skeleton: Add colour section in docs.
+
+  status-badge: Add colour section in docs.
+
+  sub-nav: Add colour section in docs.
+
+  summary-list: Add colour section in docs.
+
+  switch: Add colour section in docs.
+
+  table: Add colour section in docs.
+
+  tabs: Add colour section in docs.
+
+  tags: Add colour section in docs.
+
+  task-list: Add colour section in docs.
+
+  text-input: Add colour section in docs.
+
+  text-link: Add colour section in docs.
+
+  textarea: Add colour section in docs.
+
+  time-input: Add colour section in docs.
+
+  time-picker: Add colour section in docs.
+
+  toggle-button: Add colour section in docs.
+
+- 5516760620d: docs: Add 'yourGov example application' pattern page.
+- Updated dependencies [a898848e32e]
+- Updated dependencies [5cd422a9fe2]
+- Updated dependencies [b5635a629fd]
+- Updated dependencies [dd3c366a455]
+- Updated dependencies [2a6cb20bca0]
+- Updated dependencies [736ad093ff5]
+- Updated dependencies [687d9dba075]
+- Updated dependencies [5cbdd2f97c1]
+- Updated dependencies [d297f81fe25]
+- Updated dependencies [48661f6da5b]
+  - @ag.ds-next/react@1.30.0
+
 ## 0.17.0
 
 ### Minor Changes
