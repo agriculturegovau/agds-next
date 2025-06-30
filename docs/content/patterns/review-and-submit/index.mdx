@@ -4,8 +4,6 @@ description: Review and submit is an important step of a multi-page where users 
 relatedComponents: ['progress-indicator', 'summary-list', 'table', 'task-list']
 ---
 
-If there are any [declarations](/patterns/declarations), this is where they can be added.
-
 ## Summary of input
 
 The layout for the ‘Review and submit’ page should include read-only information from all form pages of the multi-page form. Each form page should have its own section and heading to help users scan the page.
@@ -64,15 +62,15 @@ Multiple, closely-related inputs can be combined in a summary list to reduce the
 				<H2>Page 1 summary list</H2>
 				<SummaryList>
 					<SummaryListItem>
-						<SummaryListItemTerm>Term</SummaryListItemTerm>
+						<SummaryListItemTerm>Term 1</SummaryListItemTerm>
 						<SummaryListItemDescription>Description</SummaryListItemDescription>
 					</SummaryListItem>
 					<SummaryListItem>
-						<SummaryListItemTerm>Term</SummaryListItemTerm>
+						<SummaryListItemTerm>Term 2</SummaryListItemTerm>
 						<SummaryListItemDescription>Description</SummaryListItemDescription>
 					</SummaryListItem>
 					<SummaryListItem>
-						<SummaryListItemTerm>Term</SummaryListItemTerm>
+						<SummaryListItemTerm>Term 3</SummaryListItemTerm>
 						<SummaryListItemDescription>Description</SummaryListItemDescription>
 					</SummaryListItem>
 				</SummaryList>
@@ -82,11 +80,11 @@ Multiple, closely-related inputs can be combined in a summary list to reduce the
 				<H2>Page 2 summary list</H2>
 				<SummaryList>
 					<SummaryListItem>
-						<SummaryListItemTerm>Term</SummaryListItemTerm>
+						<SummaryListItemTerm>Term 1</SummaryListItemTerm>
 						<SummaryListItemDescription>Description</SummaryListItemDescription>
 					</SummaryListItem>
 					<SummaryListItem>
-						<SummaryListItemTerm>Term</SummaryListItemTerm>
+						<SummaryListItemTerm>Term 2</SummaryListItemTerm>
 						<SummaryListItemDescription>Description</SummaryListItemDescription>
 					</SummaryListItem>
 				</SummaryList>
@@ -94,11 +92,16 @@ Multiple, closely-related inputs can be combined in a summary list to reduce the
 			</Stack>
 
 			<Divider />
-			<ButtonGroup>
+			<Flex
+				alignItems={['stretch', 'center']}
+				flexDirection={['column', 'row']}
+				flexWrap="wrap"
+				gap={1}
+			>
 				<Button>Submit form</Button>
 				<Button variant="secondary">Save and exit</Button>
 				<Button variant="tertiary">Cancel</Button>
-			</ButtonGroup>
+			</Flex>
 		</Stack>
 	</Column>
 </Columns>
@@ -127,7 +130,7 @@ In a multi-task form process, each multi-page form should have its own ‘Review
 
 When multiple different forms are required, a [task list](/components/task-list) can be used to guide a user through a multi-task process. A multi-task process is usually made up of multiple multi-page forms. Each multi-page form included in a task list should have its own ‘Review and submit’ step. This is important because multi-page forms can be used in a modular way across different multi-task services.
 
-In all situations ‘Review and submit’ tasks should enable the user to review all of the  information they have provided before submitting the form.
+In all situations ‘Review and submit’ tasks should enable the user to review all of the information they have provided before submitting the form.
 
 ```jsx live
 <Stack gap={3}>
@@ -230,16 +233,21 @@ Once the changes are saved, the user will be returned to the ‘Review and submi
 				</Text>
 			</Stack>
 			<FormStack>
-				<TextInput hideOptionalLabel label="Term" value="Description" />
-				<TextInput hideOptionalLabel label="Label text" value="text" />
-				<TextInput hideOptionalLabel label="Label text" value="text" />
+				<TextInput hideOptionalLabel label="Term 1" value="Description" />
+				<TextInput hideOptionalLabel label="Term 2" value="Description" />
+				<TextInput hideOptionalLabel label="Term 3" value="Description" />
 			</FormStack>
 			<Divider />
-			<ButtonGroup>
+			<Flex
+				alignItems={['stretch', 'center']}
+				flexDirection={['column', 'row']}
+				flexWrap="wrap"
+				gap={1}
+			>
 				<Button>Save and continue</Button>
 				<Button variant="secondary">Save and exit</Button>
 				<Button variant="tertiary">Cancel</Button>
-			</ButtonGroup>
+			</Flex>
 		</Stack>
 	</Column>
 </Columns>
@@ -291,16 +299,21 @@ For an interactive example you can complete the ‘Apply for a mobile food vendo
 		</Text>
 	</Stack>
 	<FormStack>
-		<TextInput hideOptionalLabel label="Term" value="Description" />
-		<TextInput hideOptionalLabel label="Label text" value="text" />
-		<TextInput hideOptionalLabel label="Label text" value="text" />
+		<TextInput hideOptionalLabel label="Term 1" value="Description" />
+		<TextInput hideOptionalLabel label="Term 2" value="Description" />
+		<TextInput hideOptionalLabel label="Term 3" value="Description" />
 	</FormStack>
 	<Divider />
-	<ButtonGroup>
+	<Flex
+		alignItems={['stretch', 'center']}
+		flexDirection={['column', 'row']}
+		flexWrap="wrap"
+		gap={1}
+	>
 		<Button>Save and continue</Button>
 		<Button variant="secondary">Save and exit</Button>
 		<Button variant="tertiary">Cancel</Button>
-	</ButtonGroup>
+	</Flex>
 </Stack>
 ```
 
