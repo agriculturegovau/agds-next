@@ -78,7 +78,7 @@ function renderAppLayout({
 						emerging.
 					</Text>
 					<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
-						&copy; 2024 Department of Agriculture, Fisheries and Forestry
+						&copy; 2025 Department of Agriculture, Fisheries and Forestry
 					</Text>
 				</AppLayoutFooter>
 			</AppLayoutContent>

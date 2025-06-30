@@ -27,11 +27,11 @@ exports[`Drawer renders correctly 1`] = `
         <div
           aria-labelledby="drawer-:r0:-title"
           aria-modal="true"
-          class="css-1nou9z3-boxStyles-DrawerDialog"
+          class="css-1j57htw-boxStyles-DrawerDialog"
           role="dialog"
         >
           <div
-            class="css-1fzj2hl-boxStyles-DrawerHeader"
+            class="css-akn2k1-boxStyles"
           >
             <h2
               class="css-1ri2f4k-boxStyles-DrawerHeaderTitle"
@@ -41,16 +41,51 @@ exports[`Drawer renders correctly 1`] = `
             >
               Drawer title
             </h2>
+            <button
+              aria-hidden="true"
+              class="css-19wwocd-BaseButton-DrawerDialog"
+              tabindex="-1"
+              type="button"
+            >
+              <span>
+                <span
+                  class="css-oobk4c-Button"
+                >
+                  Close
+                </span>
+                <span
+                  aria-live="assertive"
+                />
+              </span>
+              <svg
+                aria-hidden="true"
+                class="css-16yahzk-Button"
+                clip-rule="evenodd"
+                fill-rule="evenodd"
+                focusable="false"
+                height="24"
+                role="img"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M18 6 6 18M6 6l12 12"
+                />
+              </svg>
+            </button>
           </div>
-          <div
-            class="css-1r9s54p-boxStyles-DrawerContent"
+          <section
+            aria-label="Drawer title content"
+            class="css-b7dlx0-boxStyles-DrawerContent"
+            tabindex="0"
           >
             <p
               class="css-dbscsh-boxStyles"
             >
               Example content.
             </p>
-          </div>
+          </section>
           <div
             class="css-10pjjkw-boxStyles-DrawerFooter"
           >
@@ -71,7 +106,7 @@ exports[`Drawer renders correctly 1`] = `
             </button>
           </div>
           <button
-            class="css-1jiaeqo-BaseButton-DrawerDialog"
+            class="css-f6b0ax-BaseButton-DrawerDialog"
             type="button"
           >
             <span>

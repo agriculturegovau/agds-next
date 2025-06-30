@@ -54,7 +54,7 @@ export const FORM_STEPS = [
 		component: FormRegisterPetDetailsStep3,
 	},
 	{
-		label: 'Confirm and submit',
+		label: 'Review and submit',
 		component: FormRegisterPetDetailsStep4,
 	},
 ];

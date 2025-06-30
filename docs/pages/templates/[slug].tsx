@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { type GetStaticProps, type InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { Box } from '@ag.ds-next/react/box';
 import { Prose } from '@ag.ds-next/react/prose';
@@ -7,8 +7,8 @@ import {
 	getTemplate,
 	getTemplateBreadcrumbs,
 	getTemplateNavLinks,
-	Template,
 	getTemplateSlugs,
+	type Template,
 } from '../../lib/mdx/templates';
 import { withBasePath } from '../../lib/img';
 import { TemplateLayout } from '../../components/TemplateLayout';
@@ -17,15 +17,14 @@ import { DocumentTitle } from '../../components/DocumentTitle';
 
 export default function TemplatePage({
 	breadcrumbs,
-	template,
 	navLinks,
+	template,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+	const documentTitle = `${template.title} template`;
+	const components = mdxComponents({ title: documentTitle });
 	return (
 		<Fragment>
-			<DocumentTitle
-				description={template.description}
-				title={`${template.title} template`}
-			/>
+			<DocumentTitle description={template.description} title={documentTitle} />
 			<TemplateLayout
 				breadcrumbs={breadcrumbs}
 				editPath={`/docs/content/templates/${template.slug}/index.mdx`}
@@ -40,7 +39,7 @@ export default function TemplatePage({
 							src={withBasePath(`/img/templates/${template.slug}.webp`)}
 						/>
 					</Box>
-					<MDXRemote {...template.source} components={mdxComponents} />
+					<MDXRemote {...template.source} components={components} />
 				</Prose>
 			</TemplateLayout>
 		</Fragment>
@@ -49,9 +48,9 @@ export default function TemplatePage({
 
 export const getStaticProps: GetStaticProps<
 	{
-		template: Template;
-		navLinks: Awaited<ReturnType<typeof getTemplateNavLinks>>;
 		breadcrumbs: Awaited<ReturnType<typeof getTemplateBreadcrumbs>>;
+		navLinks: Awaited<ReturnType<typeof getTemplateNavLinks>>;
+		template: Template;
 	},
 	{ slug: string }
 > = async ({ params }) => {
@@ -67,10 +66,10 @@ export const getStaticProps: GetStaticProps<
 
 	return {
 		props: {
-			template,
-			navLinks,
 			breadcrumbs,
+			navLinks,
 			slug,
+			template,
 		},
 	};
 };
@@ -78,9 +77,9 @@ export const getStaticProps: GetStaticProps<
 export const getStaticPaths = async () => {
 	const slugs = await getTemplateSlugs();
 	return {
+		fallback: false,
 		paths: slugs.map((slug) => ({
 			params: { slug },
 		})),
-		fallback: false,
 	};
 };

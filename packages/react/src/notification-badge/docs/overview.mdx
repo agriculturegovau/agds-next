@@ -31,3 +31,16 @@ Use the `max` property where the count is expected to exceed a reasonable number
 ```jsx live
 <NotificationBadge tone="action" max={99} value={123} />
 ```
+
+## Colour
+
+```jsx live colorSection
+<Stack gap={1.5}>
+	<H4>Notification badges: on [%_PALETTE_%] background</H4>
+	<Flex gap={1}>
+		<NotificationBadge tone="neutral" value={16} />
+		<NotificationBadge tone="action" value={8} />
+		<NotificationBadge max={99} tone="action" value={123} />
+	</Flex>
+</Stack>
+```

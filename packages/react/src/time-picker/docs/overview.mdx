@@ -181,3 +181,25 @@ Use the `invalid` prop to indicate if the user input is invalid. The `isValidTim
 	);
 };
 ```
+
+## Colour
+
+```jsx live colorSection
+() => {
+	const [value, setValue] = React.useState(null);
+
+	const onChange = (timeValue) => {
+		console.log('onChange', timeValue);
+		setValue(timeValue);
+	};
+
+	return (
+		<TimePicker
+			hint="Start typing to see results"
+			label="Time picker: on [%_PALETTE_%] background"
+			onChange={onChange}
+			value={value}
+		/>
+	);
+};
+```

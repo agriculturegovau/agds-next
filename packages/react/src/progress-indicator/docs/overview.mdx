@@ -212,3 +212,41 @@ Once the user saves their changes, they’re taken back to the main step page an
 		</a>
 	</li>
 </ol>
+
+## Colour
+
+```jsx live colorSection shadeAlt
+<Columns cols={{ xs: 1, sm: 2 }} gap={0}>
+	<Stack gap={1.5} padding={1.5}>
+		<H4>Progress indicator: on [%_PALETTE_%] body background</H4>
+		<ProgressIndicator
+			activePath="#organisations"
+			items={[
+				{ label: 'Introduction', status: 'done', href: '#introduction' },
+				{ label: 'Submit evidence', status: 'saved', href: '#evidence' },
+				{ label: 'Organisations', status: 'started', href: '#organisations' },
+				{ label: 'Business contacts', status: 'error', href: '#contacts' },
+				{ label: 'Case studies', status: 'todo', href: '#case-studies' },
+				{ label: 'Attachments', status: 'started', href: '#attachments' },
+				{ label: 'Review and submit', status: 'blocked', href: '#review' },
+			]}
+		/>
+	</Stack>
+	<Stack background="bodyAlt" gap={1.5} padding={1.5}>
+		<H4>Progress indicator: on [%_PALETTE_%] bodyAlt background</H4>
+		<ProgressIndicator
+			activePath="#organisations"
+			background="bodyAlt"
+			items={[
+				{ label: 'Introduction', status: 'done', href: '#introduction' },
+				{ label: 'Submit evidence', status: 'saved', href: '#evidence' },
+				{ label: 'Organisations', status: 'started', href: '#organisations' },
+				{ label: 'Business contacts', status: 'error', href: '#contacts' },
+				{ label: 'Case studies', status: 'todo', href: '#case-studies' },
+				{ label: 'Attachments', status: 'started', href: '#attachments' },
+				{ label: 'Review and submit', status: 'blocked', href: '#review' },
+			]}
+		/>
+	</Stack>
+</Columns>
+```

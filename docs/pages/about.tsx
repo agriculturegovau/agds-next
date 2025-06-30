@@ -1,5 +1,5 @@
 import { normalize } from 'path';
-import { InferGetStaticPropsType } from 'next';
+import { type InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { Prose } from '@ag.ds-next/react/prose';
 import { getMarkdownData, serializeMarkdown } from '../lib/mdxUtils';
@@ -10,10 +10,11 @@ import { PageLayout } from '../components/PageLayout';
 import { mdxComponents } from '../components/mdxComponents';
 
 export default function AboutPage({
-	title,
 	description,
 	source,
+	title,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+	const components = mdxComponents({ title: title });
 	return (
 		<>
 			<DocumentTitle title={title} />
@@ -25,7 +26,7 @@ export default function AboutPage({
 				>
 					<PageTitle introduction={description} title={title} />
 					<Prose>
-						<MDXRemote {...source} components={mdxComponents} />
+						<MDXRemote {...source} components={components} />
 					</Prose>
 				</PageLayout>
 			</SiteLayout>
@@ -40,9 +41,9 @@ export const getStaticProps = async () => {
 	const source = await serializeMarkdown(content, data);
 	return {
 		props: {
-			title: data?.title as string,
 			description: data?.description as string,
 			source,
+			title: data?.title as string,
 		},
 	};
 };

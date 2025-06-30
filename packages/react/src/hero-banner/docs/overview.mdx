@@ -85,3 +85,59 @@ Use the `HeroSubcategoryBanner` components pages within a category.
 	</HeroSubcategoryBannerTitle>
 </HeroSubcategoryBanner>
 ```
+
+## Colour
+
+```jsx live colorSection shadeAlt
+<Stack gap={1.5} paddingX={{ xs: 0.75, md: 1.5 }} paddingY={1.5}>
+	<H4>Hero banner: on [%_PALETTE_%] body background</H4>
+	<HeroBanner
+		image={
+			<img
+				alt=""
+				role="presentation"
+				src="/img/placeholder/hero-banner.jpeg"
+			/>
+		}
+	>
+		<HeroBannerTitleContainer>
+			<HeroBannerTitle>
+				Website hero banner title
+			</HeroBannerTitle>
+			<HeroBannerSubtitle>
+				Short hero banner sentence
+			</HeroBannerSubtitle>
+		</HeroBannerTitleContainer>
+		<SearchBox onSubmit={() => console.log()}>
+			<SearchBoxInput label="Search this website" />
+			<SearchBoxButton iconOnly={{ xs: true, md: false }}>Search</SearchBoxButton>
+		</SearchBox>
+	</HeroBanner>
+</Stack>
+<Stack background="bodyAlt" gap={1.5} paddingX={{ xs: 0.75, md: 1.5 }} paddingY={1.5}>
+	<H4>Hero banner: on [%_PALETTE_%] bodyAlt background</H4>
+	<HeroBanner
+		background="shadeAlt"
+		image={
+			<img
+				alt=""
+				role="presentation"
+				src="/img/placeholder/hero-banner.jpeg"
+			/>
+		}
+	>
+		<HeroBannerTitleContainer>
+			<HeroBannerTitle>
+				Website hero banner title
+			</HeroBannerTitle>
+			<HeroBannerSubtitle>
+				Short hero banner sentence
+			</HeroBannerSubtitle>
+		</HeroBannerTitleContainer>
+		<SearchBox onSubmit={() => console.log()}>
+			<SearchBoxInput label="Search this website" />
+			<SearchBoxButton iconOnly={{ xs: true, md: false }}>Search</SearchBoxButton>
+		</SearchBox>
+	</HeroBanner>
+</Stack>
+```

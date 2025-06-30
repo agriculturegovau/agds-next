@@ -17,7 +17,7 @@ Avatars are used to show a thumbnail representation of an individual.
 Use the `size` prop to change the size of the avatar.
 
 ```jsx live
-<Flex alignItems="center" gap={0.5}>
+<Flex alignItems="center" flexWrap="wrap" gap={0.5}>
 	<Avatar name="Taj Grainger" size="sm" />
 	<Avatar name="Isabel Edmund" size="md" />
 	<Avatar name="Ethan Polglaze" size="lg" />
@@ -40,20 +40,93 @@ Use the `action` tone if the Avatar is used within an interactive element such a
 </Flex>
 ```
 
-## Colour
+## Inside an interactive element
 
-AgDS foreground components respond to the background colour of their parent container. When placed on a dark palette background, the dark palette variant of the component is displayed. When placed on a light palette background, the light palette variant is displayed.
-
-This logic ensures sufficient contrast between foreground and background elements is maintained to meet WCAG 2.1 AA 4.5:1 contrast ratio for text (WCAG 1.4.3) and 3:1 for graphic elements that convey information (WCAG 1.4.11).
+An avatar can be incorporated within interactive elements like an account [dropdown menu](/components/dropdown-menu). Ensure the interactive element has a meaningful accessible name. For example, if the button opens account options, ensure the button with the avatar name includes the purpose of the element in its accessible name.
 
 ```jsx live
-<>
-	<Box padding={1.5}>
-		<Avatar name="William Mead" tone="action" />
-	</Box>
+() => {
+	return (
+		<DropdownMenu>
+			<Flex
+				css={{
+					background: boxPalette.backgroundBody,
+					display: 'inline-block',
+					'&:hover': {
+						backgroundColor: boxPalette.backgroundShade,
+					},
+				}}
+				padding={1}
+			>
+				<DropdownMenuButton
+					css={{
+						textDecoration: 'none',
+					}}
+				>
+					{/** import { VisuallyHidden } from '@ag.ds-next/react/a11y'; */}
+					<VisuallyHidden>
+						Account menu {boxPalette.backgroundShade}
+					</VisuallyHidden>
+					<Flex
+						alignItems="center"
+						aria-hidden
+						as="span"
+						gap={0.5}
+						width="100%"
+					>
+						<Avatar name="Jane Smith" size="md" tone="action" />
+						<Flex
+							as="span"
+							css={{ overflow: 'hidden' }}
+							flexDirection="column"
+							width="100%"
+						>
+							<Text color="action" fontSize="xs" fontWeight="bold">
+								Jane Smith
+							</Text>
+							<Text color="muted" fontSize="xs">
+								Entity name
+							</Text>
+						</Flex>
+					</Flex>
+				</DropdownMenuButton>
+			</Flex>
+			<DropdownMenuPanel>
+				<DropdownMenuItem onClick={() => console.log('Profile')}>
+					Profile
+				</DropdownMenuItem>
+				<DropdownMenuItem onClick={() => console.log('Messages')}>
+					Messages
+				</DropdownMenuItem>
+				<DropdownMenuItem onClick={() => console.log('Account settings')}>
+					Account settings
+				</DropdownMenuItem>
+			</DropdownMenuPanel>
+		</DropdownMenu>
+	);
+};
+```
 
-	<Box background="body" padding={1.5} palette="dark">
-		<Avatar name="William Mead" tone="action" />
-	</Box>
-</>
+## Colour
+
+```jsx live colorSection
+<Stack gap={1.5}>
+	<H4>Avatar: on [%_PALETTE_%] background</H4>
+	<Flex alignItems="center" flexWrap="wrap" gap={0.5}>
+		<Avatar name="Taj Grainger" size="sm" tone="action" />
+		<Avatar name="Isabel Edmund" size="md" tone="action" />
+		<Avatar name="Ethan Polglaze" size="lg" tone="action" />
+		<Avatar name="Rachel Warlow-Davies" size="xl" tone="action" />
+		<Avatar name="Callum Lascelles" size="xxl" tone="action" />
+		<Avatar name="William Mead" size="xxxl" tone="action" />
+	</Flex>
+	<Flex alignItems="center" flexWrap="wrap" gap={0.5}>
+		<Avatar name="Taj Grainger" size="sm" tone="neutral" />
+		<Avatar name="Isabel Edmund" size="md" tone="neutral" />
+		<Avatar name="Ethan Polglaze" size="lg" tone="neutral" />
+		<Avatar name="Rachel Warlow-Davies" size="xl" tone="neutral" />
+		<Avatar name="Callum Lascelles" size="xxl" tone="neutral" />
+		<Avatar name="William Mead" size="xxxl" tone="neutral" />
+	</Flex>
+</Stack>
 ```

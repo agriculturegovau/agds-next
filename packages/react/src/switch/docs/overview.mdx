@@ -54,3 +54,18 @@ Control size can be changed using the `size` prop.
 	);
 };
 ```
+
+## Colour
+
+```jsx live colorSection
+() => {
+	const [isChecked, setChecked] = React.useState(false);
+	return (
+		<Switch
+			checked={isChecked}
+			label="Switch: on [%_PALETTE_%] background"
+			onChange={setChecked}
+		/>
+	);
+};
+```

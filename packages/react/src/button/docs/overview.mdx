@@ -168,7 +168,7 @@ The medium button should be used in most cases to provide a large click target.
 </ButtonGroup>
 ```
 
-## Colour
+## Using colour
 
 If a button sits inside an interface element that uses the light colour palette, make sure you use the light action colour for the button. If a button sits inside an interface element that uses the dark colour palette, make sure you use the dark action colour for the button.
 
@@ -230,4 +230,17 @@ You can also programmatically focus a button using a `ref`.
 		</Stack>
 	);
 };
+```
+
+## Colour
+
+```jsx live colorSection
+<Stack gap={1.5}>
+	<H4>Buttons: on [%_PALETTE_%] background</H4>
+	<ButtonGroup>
+		<Button variant="primary">Primary</Button>
+		<Button variant="secondary">Secondary</Button>
+		<Button variant="tertiary">Tertiary</Button>
+	</ButtonGroup>
+</Stack>
 ```

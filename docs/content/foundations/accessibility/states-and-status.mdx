@@ -1,0 +1,52 @@
+## States and status in AgDS
+
+We use WCAG conformant states and status throughout the design system components, patterns, templates and documentation. You can use them to ensure clear communication of any change in states or status in your digital products and services.
+
+Our use of states and status in our components achieved full WCAG conformance in accessibility audits in 2022 and 2024. Implementation of AgDS states and status in our patterns is demonstrated in the [yourGov](/yourgov) application.
+
+## Requirements
+
+- State changes and status messages are clearly communicated visually and to assistive technologies with ARIA attributes.
+- State changes and status messages are understood and conveyed by assistive technology.
+- Colour is not used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element.
+- Use status messages to convey important changes in content, especially destructive ones.
+- Status messages allow users to confirm, correct, or reverse actions that have legal, financial or data consequences.
+
+### Button
+
+We have different states for buttons to enhance usability, and we ensure colour alone is not used to convey this:
+
+- Primary and secondary buttons have an underline on hover.
+- Tertiary button underline disappears on hover.
+- Icon-only button increases size on hover.
+
+For more information, go to [Button – accessibility](/components/button/accessibility).
+
+### Progress indicator
+
+- A clear status label is used, so that colour is not used as the only visual means of conveying the state of a step – for example, not started, in progress and completed.
+- A meaningful icon is used to quickly convey the state of the step.
+- Semantic code that conveys current step and its position in the total number of steps.
+
+For more information, go to [Progress indicator – accessibility](/components/progress-indicator/accessibility).
+
+## Benefits
+
+- Provides clear interaction feedback to all users.
+- Helps users understand when actions are being processed.
+- All users can understand where they are up to in a process.
+- Communicates system status clearly.
+- Reduces anxiety by confirming user actions and completed tasks.
+- Prevents confusion when buttons are unavailable.
+- Screen reader users can understand which step they’re on in a process and how many steps remain.
+- Assistive technology can convey the purpose of each step and current progress.
+- Improves usability for voice control software users.
+
+## WCAG references
+
+- [Understanding success criterion 1.3.1 Info and relationships](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html)
+- [Understanding success criterion 1.4.1 Use of colour](https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html)
+- [Understanding success criterion 3.3.4 Error prevention (Legal, financial, data)](https://www.w3.org/WAI/WCAG21/Understanding/error-prevention-legal-financial-data.html)
+- [Understanding success criterion 4.1.2 Name, role, value](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html)
+- [Understanding success criterion 4.1.3 Status messages](https://www.w3.org/WAI/WCAG21/Understanding/status-messages.html)
+- [Making content usable for people with cognitive and learning disabilities](https://www.w3.org/TR/coga-usable/#use-icons-that-help-the-user-pattern)

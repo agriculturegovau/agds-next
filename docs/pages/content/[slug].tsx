@@ -1,4 +1,4 @@
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { type GetStaticProps, type InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { Prose } from '@ag.ds-next/react/prose';
@@ -8,20 +8,21 @@ import { DocumentTitle } from '../../components/DocumentTitle';
 import { PageLayout } from '../../components/PageLayout';
 import { PageTitle } from '../../components/PageTitle';
 import {
-	getContentList,
 	getContent,
 	getContentBreadcrumbs,
-	Content,
+	getContentList,
 	getContentNavLinks,
+	type Content,
 } from '../../lib/mdx/content';
 import { generateToc } from '../../lib/generateToc';
 
 export default function ContentPage({
 	breadcrumbs,
-	navLinks,
 	document,
+	navLinks,
 	toc,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+	const components = mdxComponents({ title: document.title });
 	return (
 		<>
 			<DocumentTitle
@@ -34,9 +35,9 @@ export default function ContentPage({
 					breadcrumbs={breadcrumbs}
 					editPath={`/docs/content/content/${document.slug}.mdx`}
 					sideNav={{
+						items: navLinks,
 						title: 'Content',
 						titleLink: '/content',
-						items: navLinks,
 					}}
 				>
 					<PageTitle
@@ -50,7 +51,7 @@ export default function ContentPage({
 						/>
 					) : null}
 					<Prose>
-						<MDXRemote {...document.source} components={mdxComponents} />
+						<MDXRemote {...document.source} components={components} />
 					</Prose>
 				</PageLayout>
 			</SiteLayout>
@@ -60,9 +61,9 @@ export default function ContentPage({
 
 export const getStaticProps: GetStaticProps<
 	{
+		breadcrumbs: Awaited<ReturnType<typeof getContentBreadcrumbs>>;
 		document: Content;
 		navLinks: Awaited<ReturnType<typeof getContentNavLinks>>;
-		breadcrumbs: Awaited<ReturnType<typeof getContentBreadcrumbs>>;
 		toc: Awaited<ReturnType<typeof generateToc>>;
 	},
 	{ slug: string }
@@ -80,9 +81,9 @@ export const getStaticProps: GetStaticProps<
 
 	return {
 		props: {
+			breadcrumbs,
 			document,
 			navLinks,
-			breadcrumbs,
 			toc,
 		},
 	};
@@ -92,9 +93,9 @@ export const getStaticPaths = async () => {
 	const content = await getContentList();
 
 	return {
+		fallback: false,
 		paths: content.map(({ slug }) => ({
 			params: { slug },
 		})),
-		fallback: false,
 	};
 };

@@ -1,4 +1,4 @@
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { type GetStaticProps, type InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { Prose } from '@ag.ds-next/react/prose';
@@ -8,10 +8,10 @@ import { DocumentTitle } from '../../components/DocumentTitle';
 import { PageLayout } from '../../components/PageLayout';
 import { PageTitle } from '../../components/PageTitle';
 import {
-	getFoundationList,
 	getFoundation,
 	getFoundationBreadcrumbs,
-	Foundation,
+	getFoundationList,
+	type Foundation,
 } from '../../lib/mdx/foundations';
 import { generateToc } from '../../lib/generateToc';
 
@@ -20,6 +20,7 @@ export default function FoundationsPage({
 	foundation,
 	toc,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+	const components = mdxComponents({ title: foundation.title });
 	return (
 		<>
 			<DocumentTitle
@@ -42,7 +43,7 @@ export default function FoundationsPage({
 						/>
 					) : null}
 					<Prose>
-						<MDXRemote {...foundation.source} components={mdxComponents} />
+						<MDXRemote {...foundation.source} components={components} />
 					</Prose>
 				</PageLayout>
 			</SiteLayout>
@@ -80,12 +81,12 @@ export const getStaticProps: GetStaticProps<
 export const getStaticPaths = async () => {
 	const foundations = await (
 		await getFoundationList()
-	).filter(({ slug }) => !['tokens'].includes(slug));
+	).filter(({ slug }) => !['accessibility', 'tokens'].includes(slug));
 
 	return {
+		fallback: false,
 		paths: foundations.map(({ slug }) => ({
 			params: { slug },
 		})),
-		fallback: false,
 	};
 };

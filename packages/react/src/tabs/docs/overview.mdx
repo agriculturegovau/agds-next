@@ -131,3 +131,40 @@ Use the `activeTabIndex` and `setActiveIndex` props to control the active tab in
 	);
 };
 ```
+
+## Colour
+
+```jsx live colorSection shadeAlt
+<>
+	<Stack gap={1.5} padding={1.5}>
+		<H4>Tabs: on [%_PALETTE_%] body background</H4>
+		<Tabs>
+			<TabList>
+				<TabButton>Tab 1</TabButton>
+				<TabButton>Tab 2</TabButton>
+				<TabButton>Tab 3</TabButton>
+			</TabList>
+			<TabPanels>
+				<TabPanel>Tab panel 1.</TabPanel>
+				<TabPanel>Tab panel 2.</TabPanel>
+				<TabPanel>Tab panel 3.</TabPanel>
+			</TabPanels>
+		</Tabs>
+	</Stack>
+	<Stack background="bodyAlt" gap={1.5} padding={1.5}>
+		<H4>Tabs: on [%_PALETTE_%] bodyAlt background</H4>
+		<Tabs background="bodyAlt">
+			<TabList>
+				<TabButton>Tab 1</TabButton>
+				<TabButton>Tab 2</TabButton>
+				<TabButton>Tab 3</TabButton>
+			</TabList>
+			<TabPanels>
+				<TabPanel>Tab panel 1.</TabPanel>
+				<TabPanel>Tab panel 2.</TabPanel>
+				<TabPanel>Tab panel 3.</TabPanel>
+			</TabPanels>
+		</Tabs>
+	</Stack>
+</>
+```

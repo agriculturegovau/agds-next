@@ -1,14 +1,14 @@
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { type GetStaticProps, type InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { Prose } from '@ag.ds-next/react/prose';
 import {
-	getPkgSlugs,
 	getPkg,
-	Pkg,
-	getPkgNavLinks,
 	getPkgBreadcrumbs,
 	getPkgDocsContent,
+	getPkgNavLinks,
+	getPkgSlugs,
+	type Pkg,
 } from '../../../lib/mdx/packages';
 import { mdxComponents } from '../../../components/mdxComponents';
 import { DocumentTitle } from '../../../components/DocumentTitle';
@@ -16,15 +16,17 @@ import { PkgLayout } from '../../../components/PkgLayout';
 import { generateToc } from '../../../lib/generateToc';
 
 export default function PackagesAccessibility({
-	pkg,
-	navLinks,
 	breadcrumbs,
+	navLinks,
+	pkg,
 	source,
 	toc,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+	const documentTitle = `${pkg.title} Accessibility`;
+	const components = mdxComponents({ title: documentTitle });
 	return (
 		<>
-			<DocumentTitle title={`${pkg.title} Accessibility`} />
+			<DocumentTitle title={documentTitle} />
 			<PkgLayout
 				breadcrumbs={breadcrumbs}
 				editPath={`/packages/react/src/${pkg.slug}/docs/accessibility.mdx`}
@@ -38,7 +40,7 @@ export default function PackagesAccessibility({
 					/>
 				) : null}
 				<Prose id="pkg-content">
-					<MDXRemote {...source} components={mdxComponents} />
+					<MDXRemote {...source} components={components} />
 				</Prose>
 			</PkgLayout>
 		</>
@@ -47,9 +49,9 @@ export default function PackagesAccessibility({
 
 export const getStaticProps: GetStaticProps<
 	{
-		pkg: NonNullable<Pkg>;
-		navLinks: Awaited<ReturnType<typeof getPkgNavLinks>>;
 		breadcrumbs: Awaited<ReturnType<typeof getPkgBreadcrumbs>>;
+		navLinks: Awaited<ReturnType<typeof getPkgNavLinks>>;
+		pkg: NonNullable<Pkg>;
 		source: NonNullable<
 			Awaited<ReturnType<typeof getPkgDocsContent>>
 		>['source'];
@@ -73,9 +75,9 @@ export const getStaticProps: GetStaticProps<
 
 	return {
 		props: {
-			pkg,
-			navLinks,
 			breadcrumbs,
+			navLinks,
+			pkg,
 			source: pkgContent.source,
 			toc,
 		},
@@ -85,9 +87,9 @@ export const getStaticProps: GetStaticProps<
 export const getStaticPaths = async () => {
 	const slugs = await getPkgSlugs();
 	return {
+		fallback: false,
 		paths: slugs.map((slug) => ({
 			params: { slug },
 		})),
-		fallback: false,
 	};
 };

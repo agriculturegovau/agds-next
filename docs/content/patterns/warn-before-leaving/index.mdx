@@ -1,0 +1,45 @@
+---
+title: Warn before leaving
+description: Use the Warn before leaving pattern to prevent users from accidentally losing unsaved data when navigating away from a form or in-progress task.
+relatedComponents: ['modal']
+---
+
+## Overview
+
+This pattern displays a confirmation modal when a user attempts to leave a page or step where unsaved information may be lost. It gives them the opportunity to stay and complete their action or confirm that they wish to leave without saving.
+
+<ImageWithBorder
+	alt="Screenshot of an open Modal dialog with the title ‘Are you sure you want to cancel?’ and description ‘If you cancel, you will lose all information entered.’"
+	src="/img/patterns/warn-before-leaving-modal.png"
+/>
+
+## When to use
+
+### A user is in the middle of completing a form or multi-step process
+
+Warn users when navigating away from a form or process will result in the loss of any information they’ve entered so far. This includes situations where the form does not autosave or where progress cannot be resumed later.
+
+This warning is especially important in multi-step forms, where users may try to navigate using the progress indicator without realising their data isn’t saved. Users may also be interrupted or misunderstand where a button or link will take them.
+
+Use this pattern to help prevent accidental data loss, reduce frustration, and protect anything the user has spent time entering. This is particularly important in longer or more complex processes like applications, registrations, or multi-page forms.
+
+### Leaving the current page would result in lost input or progress
+
+Warn users if leaving the current page will cause them to lose anything they’ve entered or selected. This could include typed responses, file uploads, selected options, or partially completed tasks that haven’t been saved.
+
+This situation often occurs when users accidentally click a navigation link, use the browser’s back button, or close the tab. In some cases, users may not realise that information is only temporarily held in the current session.
+
+Use this pattern to help users avoid unintentionally discarding their work. This is especially important in forms, editable content, or processes that don’t autosave or can’t be resumed later.
+
+Note: browsers have restrictions on executing events when a user performs native browser functions like reloading or closing a tab. You will also need to hook into the browser’s `window.onbeforeunload` event and use `window.confirm` to warn users they are about to leave the page.
+
+## Why it matters
+
+Users can be interrupted, misinterpret interface elements, or be unaware that leaving a page will cause them to lose progress. A clear warning helps prevent mistakes and gives users the chance to make an informed choice.
+
+Using this pattern:
+
+- protects the user’s time and effort by preventing accidental loss of work
+- reduces frustration caused by unintended navigation
+- builds trust through transparency and giving users control over their actions
+- improves accessibility for users who may be experiencing cognitive overload, using assistive technology, or navigating at a slower pace.

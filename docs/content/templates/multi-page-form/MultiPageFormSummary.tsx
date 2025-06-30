@@ -38,7 +38,7 @@ export function MultiPageFormSummary() {
 					<Stack gap={3}>
 						<DirectionButton direction="left">Back</DirectionButton>
 						<PageTitle
-							title="Confirm and submit (H1)"
+							title="Review and submit (H1)"
 							introduction="The introductory paragraph provides context about this page of
 							the form. Use a short paragraph to reduce cognitive load."
 						/>

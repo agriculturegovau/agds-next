@@ -103,3 +103,28 @@ To modify the time format, you can change the `timeFormat` prop to one of these 
 	);
 };
 ```
+
+## Colour
+
+```jsx live colorSection
+() => {
+	const [value, setValue] = React.useState();
+
+	const onChange = (timeValue) => {
+		console.log('onChange', timeValue);
+		setValue(timeValue);
+	};
+
+	const invalid = value && !isValidTime(value.value);
+
+	return (
+		<TimeInput
+			invalid={invalid}
+			label="Time input: on [%_PALETTE_%] background"
+			message="Enter a valid time"
+			onChange={onChange}
+			value={value}
+		/>
+	);
+};
+```

@@ -1,7 +1,7 @@
 import { MouseEventHandler, PropsWithChildren } from 'react';
 import { Box } from '../box';
 import { Flex } from '../flex';
-import { tokens } from '../core';
+import { mapSpacing, tokens } from '../core';
 import { ChevronDownIcon } from '../icon';
 import { BaseButton } from '../button/';
 import { hoverColorMap, AccordionBackground } from './utils';
@@ -34,6 +34,10 @@ export const AccordionTitle = ({
 				background={background}
 				color="action"
 				css={{
+					'[data-accordion-indent="true"] &': {
+						paddingLeft: mapSpacing(1.5),
+						paddingRight: mapSpacing(1.5),
+					},
 					'&:hover': {
 						backgroundColor: hoverColorMap[background],
 					},

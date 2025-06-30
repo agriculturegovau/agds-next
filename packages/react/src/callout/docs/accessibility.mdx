@@ -1,16 +1,37 @@
-## Apply aria-labels to custom icons
+Learn more about how to meet WCAG success criteria when implementing callouts. This makes them accessible and inclusive for users of all abilities and situations.
 
-You can use custom icons by passing an icon component to the icon prop.
+The callout component passed accessibility testing in 2022 and 2024.
 
-When doing this, you must apply the correct aria attributes to the icon.
+## Clear and descriptive links
 
-```jsx
-<Callout
-	title="Callout heading"
-	icon={
-		<CalendarIcon aria-hidden="false" aria-label="Calendar" color="border" />
-	}
->
-	<Text as="p">Description of the callout.</Text>
-</Callout>
-```
+Learn more about creating clear and descriptive links for your callout by visiting [AgDS Clear communication – Links](/foundations/accessibility/clear-communication#links).
+
+## Content structure
+
+### Requirements
+
+- Meaningful and logical sequence of content in the callout.
+- Information relationships are understood and conveyed by assistive technology.
+- Where used, headings clearly describe or introduce content.
+- Use `h2` to `h5` to identify headings in callouts.
+
+### Benefits
+
+- Creates a logical structure for screen reader navigation.
+- Ensures content makes sense regardless of the technology used.
+- Helps users understand the organisation and relationship of content.
+- Makes the information easier to locate.
+- Increases understanding of the content that comes next.
+
+### WCAG references
+
+- [Understanding success criterion 1.3.1 Info and relationships](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html)
+- [Understanding success criterion 1.3.2 Meaningful sequence](https://www.w3.org/WAI/WCAG21/Understanding/meaningful-sequence.html)
+- [Understanding success criterion 2.4.6 Headings and labels](https://www.w3.org/WAI/WCAG21/Understanding/headings-and-labels.html)
+
+## Related guidance
+
+- [AgDS accessibility guidance](/foundations/accessibility)
+- [WCAG 2 Overview](https://www.w3.org/WAI/standards-guidelines/wcag/)
+- [ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/)
+- [Accessibility – MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility)

@@ -61,3 +61,35 @@ The background of the Sub nav must match the background it is being placed on. F
 	/>
 </Box>
 ```
+
+## Colour
+
+```jsx live colorSection shadeAlt
+<>
+	<Stack gap={1.5} padding={1.5}>
+		<H4>Sub nav: on [%_PALETTE_%] body background</H4>
+		<SubNav
+			activePath="#usage"
+			links={[
+				{ href: '#usage', label: 'Usage' },
+				{ href: '#code', label: 'Code' },
+				{ href: '#code', label: 'Content' },
+				{ href: '#accessibility', label: 'Accessibility' },
+			]}
+		/>
+	</Stack>
+	<Stack background="bodyAlt" gap={1.5} padding={1.5}>
+		<H4>Sub nav: on [%_PALETTE_%] bodyAlt background</H4>
+		<SubNav
+			activePath="#usage"
+			background="bodyAlt"
+			links={[
+				{ href: '#usage', label: 'Usage' },
+				{ href: '#code', label: 'Code' },
+				{ href: '#code', label: 'Content' },
+				{ href: '#accessibility', label: 'Accessibility' },
+			]}
+		/>
+	</Stack>
+</>
+```

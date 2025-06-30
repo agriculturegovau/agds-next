@@ -20,11 +20,15 @@ export default meta;
 
 type AccordionTemplateProps = {
 	background: 'body' | 'bodyAlt';
+	indent?: boolean;
 };
 
-const AccordionBasicTemplate = ({ background }: AccordionTemplateProps) => (
+const AccordionBasicTemplate = ({
+	background,
+	indent,
+}: AccordionTemplateProps) => (
 	<Box background={background} padding={1.5}>
-		<Accordion>
+		<Accordion indent={indent}>
 			<AccordionItem background={background} title="Accordion title">
 				<AccordionItemContent>
 					<Text as="p">This is some text inside an Accordion</Text>
@@ -38,14 +42,21 @@ export const Basic: Story = {
 	render: () => <AccordionBasicTemplate background="body" />,
 };
 
+export const Indented: Story = {
+	render: () => <AccordionBasicTemplate background="body" indent />,
+};
+
 export const onBodyAlt: Story = {
 	render: () => <AccordionBasicTemplate background="bodyAlt" />,
 	name: 'On bodyAlt background',
 };
 
-const AccordionGroupTemplate = ({ background }: AccordionTemplateProps) => (
+const AccordionGroupTemplate = ({
+	background,
+	indent,
+}: AccordionTemplateProps) => (
 	<Box background={background} padding={1.5}>
-		<Accordion>
+		<Accordion indent={indent}>
 			<AccordionItem background={background} title="Accordion 1">
 				<AccordionItemContent>
 					<Text as="p">This is some text inside an Accordion</Text>
@@ -96,6 +107,10 @@ const AccordionGroupTemplate = ({ background }: AccordionTemplateProps) => (
 
 export const Group: Story = {
 	render: () => <AccordionGroupTemplate background="body" />,
+};
+
+export const GroupIndented: Story = {
+	render: () => <AccordionGroupTemplate background="body" indent />,
 };
 
 export const GroupOnBodyAlt: Story = {

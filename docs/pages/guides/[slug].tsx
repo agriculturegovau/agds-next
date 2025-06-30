@@ -1,4 +1,4 @@
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { type GetStaticProps, type InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { InpageNav } from '@ag.ds-next/react/inpage-nav';
 import { Prose } from '@ag.ds-next/react/prose';
@@ -6,7 +6,7 @@ import {
 	getGuide,
 	getGuidesBreadcrumbs,
 	getGuideSlugs,
-	Guide,
+	type Guide,
 } from '../../lib/mdx/guides';
 import { mdxComponents } from '../../components/mdxComponents';
 import { SiteLayout } from '../../components/SiteLayout';
@@ -16,10 +16,11 @@ import { PageTitle } from '../../components/PageTitle';
 import { generateToc } from '../../lib/generateToc';
 
 export default function Guides({
+	breadcrumbs,
 	guide,
 	toc,
-	breadcrumbs,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+	const components = mdxComponents({ title: guide.title });
 	return (
 		<>
 			<DocumentTitle description={guide.opener} title={guide.title} />
@@ -37,7 +38,7 @@ export default function Guides({
 						/>
 					) : null}
 					<Prose>
-						<MDXRemote {...guide.source} components={mdxComponents} />
+						<MDXRemote {...guide.source} components={components} />
 					</Prose>
 				</PageLayout>
 			</SiteLayout>
@@ -47,8 +48,8 @@ export default function Guides({
 
 export const getStaticProps: GetStaticProps<
 	{
-		guide: Guide;
 		breadcrumbs: Awaited<ReturnType<typeof getGuidesBreadcrumbs>>;
+		guide: Guide;
 		toc: Awaited<ReturnType<typeof generateToc>>;
 	},
 	{ slug: string }
@@ -65,8 +66,8 @@ export const getStaticProps: GetStaticProps<
 
 	return {
 		props: {
-			guide,
 			breadcrumbs,
+			guide,
 			slug,
 			toc,
 		},
@@ -77,6 +78,7 @@ export const getStaticPaths = async () => {
 	const slugs = await getGuideSlugs();
 
 	return {
+		fallback: false,
 		paths: slugs
 			.filter((slug) => {
 				// this page is defined in docs/pages/guides/how-to-write-guidance/index.tsx
@@ -85,6 +87,5 @@ export const getStaticPaths = async () => {
 			.map((slug) => ({
 				params: { slug },
 			})),
-		fallback: false,
 	};
 };

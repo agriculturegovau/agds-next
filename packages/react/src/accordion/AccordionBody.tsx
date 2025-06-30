@@ -1,5 +1,5 @@
 import { type PropsWithChildren, useRef } from 'react';
-import { packs, useTransitionHeight } from '../core';
+import { mapSpacing, packs, useTransitionHeight } from '../core';
 
 export type AccordionBodyProps = PropsWithChildren<{
 	ariaLabelledBy: string;
@@ -20,7 +20,16 @@ export const AccordionBody = ({
 	return (
 		<div
 			aria-labelledby={ariaLabelledBy}
-			css={[transitionHeightStyles, packs.print.visible]}
+			css={[
+				{
+					'[data-accordion-indent="true"] &': {
+						paddingLeft: mapSpacing(1.5),
+						paddingRight: mapSpacing(1.5),
+					},
+				},
+				transitionHeightStyles,
+				packs.print.visible,
+			]}
 			id={id}
 			role="region"
 			{...transitionHeightProp}

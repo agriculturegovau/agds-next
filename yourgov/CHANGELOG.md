@@ -1,5 +1,34 @@
 # @ag.ds-next/yourgov
 
+## 0.10.0
+
+### Minor Changes
+
+- 5e2b99dd4c0: docs: Change all ‘Confirm and submit’ references to ‘Review and submit’.
+
+  docs: Remove all contact CTAs.
+
+  example-site: Change all ‘Confirm and submit’ references to ‘Review and submit’.
+
+  yourgov: Change all ‘Confirm and submit’ references to ‘Review and submit’.
+
+- d9cc7575106: yourgov: Bypass auth to allow navigating through the app.
+
+### Patch Changes
+
+- Updated dependencies [a898848e32e]
+- Updated dependencies [5cd422a9fe2]
+- Updated dependencies [b5635a629fd]
+- Updated dependencies [dd3c366a455]
+- Updated dependencies [5e2b99dd4c0]
+- Updated dependencies [2a6cb20bca0]
+- Updated dependencies [736ad093ff5]
+- Updated dependencies [687d9dba075]
+- Updated dependencies [5cbdd2f97c1]
+- Updated dependencies [d297f81fe25]
+- Updated dependencies [48661f6da5b]
+  - @ag.ds-next/react@1.30.0
+
 ## 0.9.0
 
 ### Minor Changes

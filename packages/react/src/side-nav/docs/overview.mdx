@@ -217,3 +217,140 @@ When you have a small number of sub-level items, it’s easier for users to see 
 	</Column>
 </Columns>
 ```
+
+## Colour
+
+```jsx live colorSection shadeAlt
+<Columns cols={{ xs: 1, sm: 2 }} gap={0}>
+	<Stack gap={1.5} padding={1.5}>
+		<H4>Side nav: on [%_PALETTE_%] body background</H4>
+		<SideNav
+			activePath="#in-detail"
+			items={[
+				{
+					href: '#welcome',
+					label: 'Welcome',
+				},
+				{
+					href: '#do-you-need-to-lodge-a-tax-return',
+					label: 'Do you need to lodge a tax return?',
+				},
+				{
+					href: '#lodge-online',
+					items: [
+						{
+							href: '#lodge-online/pre-filling',
+							label: 'Pre-filling your online tax return',
+						},
+					],
+					label: 'Lodge online',
+				},
+				{
+					href: '#whats-new-for-individuals',
+					label: 'What’s new for individuals',
+				},
+				{
+					href: '#why-you-may-receive-a-tax-bill',
+					label: 'Why you may receive a tax bill',
+				},
+				{
+					href: '#in-detail',
+					items: [
+						{
+							href: '#in-detail/record-keeping',
+							label: 'Record keeping',
+							items: [
+								{
+									href: '#in-detail/record-keeping/tax',
+									label: 'Keeping your tax records',
+								},
+								{
+									href: '#in-detail/record-keeping/incorrect-amounts',
+									label: 'Incorrect amounts',
+								},
+							],
+						},
+						{
+							href: '#tax-receipt',
+							label: 'Tax receipt',
+						},
+						{
+							href: '#pre-fill availability',
+							label: 'Pre-fill availability',
+						},
+					],
+					label: 'In detail',
+				},
+			]}
+			title="Lodging your tax return"
+			titleLink="#"
+		/>
+	</Stack>
+	<Stack background="bodyAlt" gap={1.5} padding={1.5}>
+		<H4>Side nav: on [%_PALETTE_%] bodyAlt background</H4>
+		<SideNav
+			activePath="#in-detail"
+			background="bodyAlt"
+			items={[
+				{
+					href: '#welcome',
+					label: 'Welcome',
+				},
+				{
+					href: '#do-you-need-to-lodge-a-tax-return',
+					label: 'Do you need to lodge a tax return?',
+				},
+				{
+					href: '#lodge-online',
+
+					items: [
+						{
+							href: '#lodge-online/pre-filling',
+							label: 'Pre-filling your online tax return',
+						},
+					],
+					label: 'Lodge online',
+				},
+				{
+					href: '#whats-new-for-individuals',
+					label: 'What’s new for individuals',
+				},
+				{
+					href: '#why-you-may-receive-a-tax-bill',
+					label: 'Why you may receive a tax bill',
+				},
+				{
+					href: '#in-detail',
+					items: [
+						{
+							href: '#in-detail/record-keeping',
+							label: 'Record keeping',
+							items: [
+								{
+									href: '#in-detail/record-keeping/tax',
+									label: 'Keeping your tax records',
+								},
+								{
+									href: '#in-detail/record-keeping/incorrect-amounts',
+									label: 'Incorrect amounts',
+								},
+							],
+						},
+						{
+							href: '#tax-receipt',
+							label: 'Tax receipt',
+						},
+						{
+							href: '#pre-fill availability',
+							label: 'Pre-fill availability',
+						},
+					],
+					label: 'In detail',
+				},
+			]}
+			title="Lodging your tax return"
+			titleLink="#"
+		/>
+	</Stack>
+</Columns>
+```

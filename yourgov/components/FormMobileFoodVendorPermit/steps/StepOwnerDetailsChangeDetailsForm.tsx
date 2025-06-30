@@ -104,7 +104,7 @@ export function StepOwnerDetailsChangeDetailsForm() {
 		if (step.href === pathname.replace('/change-details', '')) return 'started';
 		// After submitting each step, the `completed` key is set to `true`
 		if (formState.steps?.[step.formStateKey]?.completed) return 'done';
-		// The final step (confirm and submit) can only be viewed when all previous steps are complete
+		// The final step (review and submit) can only be viewed when all previous steps are complete
 		if (step.formStateKey === 'stepReviewAndSubmit' && !canConfirmAndSubmit)
 			return 'blocked';
 		// Review and submit is started when editing a step from that page

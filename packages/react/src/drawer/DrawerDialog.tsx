@@ -2,7 +2,7 @@ import { PropsWithChildren, ReactNode } from 'react';
 import FocusLock from 'react-focus-lock';
 import { Box } from '../box';
 import { Flex } from '../flex';
-import { mapResponsiveProp, mapSpacing, mq, tokens } from '../core';
+import { mapResponsiveProp, mapSpacing, mq, packs, tokens } from '../core';
 import { CloseIcon } from '../icon';
 import { Button } from '../button';
 import { Text } from '../text';
@@ -50,9 +50,6 @@ export function DrawerDialog({
 					boxShadow: tokens.shadow.lg,
 					inset: 0,
 					position: 'fixed',
-					[tokens.mediaQuery.max.xs]: {
-						overflowY: 'auto',
-					},
 				}}
 				flexDirection="column"
 				highContrastOutline
@@ -60,18 +57,28 @@ export function DrawerDialog({
 			>
 				<DrawerHeader>
 					<DrawerHeaderTitle id={titleId}>{title}</DrawerHeaderTitle>
+					{/* This button is a non-functioning clone of the normal Close button just to reserve the correct space */}
+					<Button
+						aria-hidden
+						css={{ visibility: 'hidden' }}
+						iconAfter={CloseIcon}
+						tabIndex={-1}
+						variant="text"
+					>
+						Close
+					</Button>
 				</DrawerHeader>
-				<DrawerContent>{children}</DrawerContent>
+				<DrawerContent title={title}>{children}</DrawerContent>
 				{actions ? <DrawerFooter>{actions}</DrawerFooter> : null}
 				<Button
 					css={mq({
 						position: 'fixed',
-						zIndex: tokens.zIndex.elevated,
-						top: '1.25rem', // align with title
 						right: mapResponsiveProp({
 							xs: mapSpacing(0.75),
 							md: mapSpacing(1.5),
 						}),
+						top: '1.25rem', // align with title
+						zIndex: tokens.zIndex.elevated,
 					})}
 					iconAfter={CloseIcon}
 					onClick={onClose}
@@ -90,22 +97,14 @@ type DrawerHeaderProps = PropsWithChildren<{}>;
 
 function DrawerHeader({ children }: DrawerHeaderProps) {
 	return (
-		<Box
+		<Flex
 			background="body"
 			borderBottom
-			css={{
-				position: 'sticky',
-				top: 0,
-				zIndex: tokens.zIndex.elevated,
-				[tokens.mediaQuery.min.sm]: {
-					position: 'relative',
-				},
-			}}
 			paddingX={{ xs: 0.75, md: 1.5 }}
 			paddingY={1}
 		>
 			{children}
-		</Box>
+		</Flex>
 	);
 }
 
@@ -133,20 +132,23 @@ function DrawerHeaderTitle({ children, id }: DrawerHeaderTitleProps) {
 
 // Drawer content
 
-type DrawerContentProps = PropsWithChildren<{}>;
+type DrawerContentProps = PropsWithChildren<{ title: string }>;
 
-function DrawerContent({ children }: DrawerContentProps) {
+function DrawerContent({ children, title }: DrawerContentProps) {
 	return (
 		<Box
+			aria-label={`${title} content`}
+			as="section"
 			background="body"
 			css={{
-				[tokens.mediaQuery.min.sm]: {
-					overflowY: 'auto',
-				},
+				overflowY: 'auto',
+				':focus': { outlineOffset: `-${packs.outline.outlineWidth}` },
 			}}
 			flexGrow={1}
+			focusRingFor="keyboard"
 			paddingX={{ xs: 0.75, md: 1.5 }}
 			paddingY={{ xs: 1, md: 1.5 }}
+			tabIndex={0}
 		>
 			{children}
 		</Box>

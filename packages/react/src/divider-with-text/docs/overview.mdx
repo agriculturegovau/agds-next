@@ -69,28 +69,8 @@ When the label is left-aligned, it aligns with form inputs, buttons, or any othe
 
 ## Colour
 
-AgDS foreground components respond to the background colour of their parent container. When placed on a dark palette background, the dark palette variant of the component is displayed. When placed on a light palette background the light palette variant is displayed.
-
-This logic ensures sufficient contrast between foreground and background elements is maintained to meet WCAG 2.1AA, 4.5:1 contrast ratio for text (WCAG 1.4.3) and 3:1 for graphic elements that convey information (WCAG 1.4.11).
-
-```jsx live
-<Box>
-	<Stack gap={1} padding={1}>
-		<DividerWithText>
-			<Text>Divider label</Text>
-		</DividerWithText>
-		<DividerWithText textAlign="left">
-			<Text>Divider label</Text>
-		</DividerWithText>
-	</Stack>
-
-	<Stack background="shade" dark gap={1} padding={1}>
-		<DividerWithText>
-			<Text>Divider label</Text>
-		</DividerWithText>
-		<DividerWithText textAlign="left">
-			<Text>Divider label</Text>
-		</DividerWithText>
-	</Stack>
-</Box>
+```jsx live colorSection
+<DividerWithText>
+	<Text>Divider with text: on [%_PALETTE_%] background</Text>
+</DividerWithText>
 ```

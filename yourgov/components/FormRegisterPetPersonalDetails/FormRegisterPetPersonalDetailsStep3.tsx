@@ -25,7 +25,7 @@ export const FormRegisterPetPersonalDetailsStep3 = () => {
 	return (
 		<FormRegisterPetPersonalDetailsContainer
 			introduction="Check and confirm all details on this page."
-			title="Confirm and submit"
+			title="Review and submit"
 		>
 			{/** Summary: Step 0 */}
 			<Stack alignItems="flex-start" gap={1.5}>

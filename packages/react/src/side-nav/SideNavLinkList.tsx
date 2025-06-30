@@ -97,7 +97,6 @@ const LinkList = ({
 							isCurrentPage={item.href === activePath}
 							isOpen={isOpen(items, isActive)}
 							key={item.href}
-							numberOfItems={numberOfItems}
 							{...item}
 						/>
 

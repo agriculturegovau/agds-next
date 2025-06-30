@@ -17,7 +17,7 @@ import { DocumentTitle } from '../components/DocumentTitle';
 import { withBasePath } from '../lib/img';
 
 const description =
-	'AgDS is a suite of tools and guidelines to help designers and developers build the steel threads of the Export Service with efficiency and consistency.';
+	'AgDS is a suite of tools and guidelines to help designers and developers build high quality digital services efficiently and consistently.';
 
 export default function Homepage() {
 	return (
@@ -35,7 +35,7 @@ export default function Homepage() {
 				>
 					<HeroBannerTitleContainer>
 						<HeroBannerTitle>
-							Build an accessible and user-friendly Export Service
+							Build accessible and user-friendly digital services
 						</HeroBannerTitle>
 						<HeroBannerSubtitle>{description}</HeroBannerSubtitle>
 					</HeroBannerTitleContainer>
