@@ -18,7 +18,7 @@ type ContextType = {
 	backLabel: string;
 	/** Callback function to submit the current step. */
 	submitStep: () => Promise<void>;
-	/** If true, the user can access the "confirm and submit step".  */
+	/** If true, the user can access the "review and submit step".  */
 	canConfirmAndSubmit: boolean;
 };
 
@@ -70,7 +70,7 @@ export function FormProvider({ children }: PropsWithChildren<{}>) {
 	}`;
 	const backLabel = editingStep?.match ? 'Back to review and submit' : 'Back';
 
-	// If true, the user can access the "confirm and submit step"
+	// If true, the user can access the "review and submit step"
 	const canConfirmAndSubmit = useMemo(() => {
 		if (
 			!formState.steps?.stepOwnerDetails?.completed ||

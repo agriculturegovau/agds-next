@@ -54,8 +54,8 @@ export const FORM_STEPS = [
 		component: FormExampleMultiStep3,
 	},
 	{
-		href: '#confirm-and-submit',
-		label: 'Confirm and submit',
+		href: '#review-and-submit',
+		label: 'Review and submit',
 		component: FormExampleMultiStep4,
 	},
 ];

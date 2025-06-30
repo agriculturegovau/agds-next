@@ -49,7 +49,7 @@ export const FormExampleMultiStep4 = () => {
 	return (
 		<FormExampleMultiStepContainer
 			introduction="The introductory paragraph provides context about this page of the form. Use a short paragraph to reduce cognitive load."
-			title="Confirm and submit (H1)"
+			title="Review and submit (H1)"
 		>
 			{/** Summary: Step 0 */}
 			<Stack alignItems="flex-start" gap={1.5}>
