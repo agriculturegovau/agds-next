@@ -1,0 +1,261 @@
+---
+title: Helpful form content
+description: Providing the right content in forms can help users understand and complete forms quickly and efficiently. The location, amount and type of content provided is important.
+relatedComponents: ['details', 'drawer']
+relatedContent: ['content-styles']
+---
+
+## Headings
+
+Headings play a crucial role in user-friendly form page design. They establish hierarchy and help users understand the purpose and structure of a form.
+
+The H1 heading should clearly state the purpose or primary action of the form. This purpose should be reflected in the primary button label. For example, where the H1 is ‘Sign in to your account’, the primary button label might be ‘Sign in’.
+
+Supporting headings should be used to organise sections logically. This is important for making complex forms easier to understand and complete.
+
+## Introductory paragraphs
+
+Use a concise, introductory paragraph of 1 or 2 sentences, immediately after the H1. This provides the user with any further context they need to understand the purpose of the form.
+
+## Requirements list
+
+List anything the user will need to complete the form. This helps users prepare and reduces the risk of abandoned forms.
+
+Give the list a help title such as ‘What you will need’. This should appear before any form’s fields. For a multi-page form, this should appear on a ‘Getting started’ page.
+
+Present requirements as a scannable list of specific items. Use plain language to ensure a good understanding of what they will need.
+
+## Hint text
+
+Use hint text for the smallest piece of information to help users understand each form input. An example is describing the required format for a field.
+
+The `hint` prop provides help that’s relevant to the majority of users, like how their information will be used, or where to find it.
+
+Don’t use long paragraphs or lists in hint text. Screen readers announce the entire text when users interact with the form element. This could frustrate users if the text is long.
+
+Don’t include links within hint text. While screen readers will read out the link text when describing the field, they will not not be informed that it is a link.
+
+```jsx live
+<TextInput
+	label="Phone number"
+	hint="Any Australian mobile or landline. For example, 0444 111 222 or 02 9988 7766"
+/>
+```
+
+## Details
+
+The Details component reveals more information when opened. Use the Details component for information that is useful for some users, but not needed by everyone to complete a form. Do not use the Details component if all users need the information to complete a form.
+
+Details should only be used for one piece of content. We recommend keeping this to a paragraph or short list. If more than one piece of content is required, use a Drawer.
+
+If the guidance pertains to a list, provide the list, then link to more detailed information on all items.
+
+We recommend the use of one link to give a clear path to the right information for the user’s context. Links to content pages should be opened in the same tab. If a user is in the middle of a process, such as filling in a form, opening links into the same tab can cause a user to lose their place. In this case, it’s preferable to open a link into a drawer or new tab. Clearly indicate this with an icon: `ExternalLinkIcon` for new tabs and `MoveLeftIcon` for drawers. Provide appropriate announcements for screen readers.
+
+```jsx live
+() => {
+	/**
+	 * This implementation is for documentation purposes only.
+	 * Use <ArticleLink> from ag.common/help-reference to handle drawers with help information.
+	 *
+	 * import { VisuallyHidden } from '@ag.ds-next/react/a11y';
+	 */
+	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
+	return (
+		<>
+			<Details iconBefore label="Why should I invite a new staff member?">
+				<Flex flexDirection="column" gap={1}>
+					<Text as="p">
+						Inviting individuals to the service can help you streamline your
+						operations. You can then assign them a role, so they can access
+						necessary information and tasks.
+					</Text>
+					<Text as="p">
+						Learn more about{' '}
+						<TextLink
+							href="/help/inviting-a-staff-member"
+							onClick={(event) => {
+								if (event.metaKey) return;
+								event.preventDefault();
+								openDrawer();
+							}}
+						>
+							inviting a staff member
+							<VisuallyHidden>, Opens in a side drawer</VisuallyHidden>
+							<Box
+								as="span"
+								css={{
+									display: 'inline',
+									marginLeft: '0.25rem',
+									position: 'relative',
+									top: 3,
+								}}
+							>
+								<MoveLeftIcon size="sm" weight="regular" />
+							</Box>
+						</TextLink>
+					</Text>
+				</Flex>
+			</Details>
+			<Drawer
+				actions={<TextLinkExternal href="#">Open in new tab</TextLinkExternal>}
+				isOpen={isDrawerOpen}
+				onClose={closeDrawer}
+				title="Inviting a staff member"
+				width="lg"
+			>
+				<Stack gap={1.5}>
+					<Text as="p" color="muted" fontSize="md">
+						Inviting individuals to join your staff can bring numerous benefits
+						to your business and help streamline your operations.
+					</Text>
+					<Text as="p">
+						As your business grows, you’ll need to scale your team accordingly.
+						Inviting new staff members allows you to expand your workforce in
+						line with your evolving needs.
+					</Text>
+					<Text as="p">Below are a list of the types of roles available:</Text>
+					<H2>Owner</H2>
+					<Text as="p">
+						Owners have the highest level of access. They can add, edit and
+						remove managers and staff members. They can set rosters, send an
+						receive messages with owners, employees and other managers.
+					</Text>
+					<H2>Manager</H2>
+					<Text as="p">
+						Managers can add, edit and remove staff members. They can set
+						rosters, send an receive messages with owners, employees and other
+						managers.
+					</Text>
+					<H2>Employee</H2>
+					<Text as="p">
+						Employees can see their shifts, send an receive messages with
+						managers and edit their personal and contact information.
+					</Text>
+					<Callout title="Need help?">
+						<Text as="p">
+							Call <strong>02 9481 1122</strong> (9am to 5pm AEST Monday to
+							Friday)
+							<br />
+							Email{' '}
+							<TextLink href="mailto:emailaccount@yourgov.gov.au">
+								emailaccount@yourgov.gov.au
+							</TextLink>
+						</Text>
+					</Callout>
+				</Stack>
+			</Drawer>
+		</>
+	);
+};
+```
+
+## Drawer
+
+A Drawer is a panel that slides in from the right side of the screen. The Drawer is overlayed on top of the main area of the page to capture the user’s attention while keeping the context of the current task.
+
+Drawers can be used to filter data, for small subtask forms and to provide supporting information to users when completing a task.
+
+Avoid lengthy content that would result in scrolling.
+
+Explore the [Drawer](/components/drawer) options to see if they might be suitable.
+
+```jsx live
+() => {
+	/** import { VisuallyHidden } from '@ag.ds-next/react/a11y'; */
+	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
+	return (
+		<>
+			<Text as="p">
+				Learn more about{' '}
+				<TextLink
+					href="/help/access-requests"
+					onClick={(event) => {
+						if (event.metaKey) return;
+						event.preventDefault();
+						openDrawer();
+					}}
+				>
+					understanding staff access requests
+					<VisuallyHidden>, Opens in a side drawer</VisuallyHidden>
+					<Box
+						as="span"
+						css={{
+							display: 'inline',
+							marginLeft: '0.25rem',
+							position: 'relative',
+							top: 3,
+						}}
+					>
+						<MoveLeftIcon size="sm" weight="regular" />
+					</Box>
+				</TextLink>
+			</Text>
+			<Drawer
+				actions={<TextLinkExternal href="#">Open in new tab</TextLinkExternal>}
+				isOpen={isDrawerOpen}
+				onClose={closeDrawer}
+				title="Help"
+			>
+				<Stack gap={1.5}>
+					<H2>Understanding staff access requests</H2>
+					<Text as="p" color="muted" fontSize="md">
+						Access requests allow your existing employees to apply for
+						permissions to use specific business systems. This enable you to
+						delegate tasks effectively and streamline your operations by giving
+						employees the tools they need to contribute.
+					</Text>
+					<H3>Managing requests</H3>
+					<Text as="p">
+						You can accept or reject each access request based on the employee's
+						role and responsibilities. Consider whether the employee needs
+						system access to perform their assigned duties.
+					</Text>
+					<H3>Removing access</H3>
+					<Text as="p">
+						After granting access, you can remove it at any time if an employee
+						no longer requires system access. You can also change their type of
+						access as their role evolves. This might happen when:
+					</Text>
+					<UnorderedList>
+						<ListItem>their role changes</ListItem>
+						<ListItem>their responsibilities shift</ListItem>
+						<ListItem>they complete a specific project</ListItem>
+					</UnorderedList>
+				</Stack>
+			</Drawer>
+		</>
+	);
+};
+```
+
+Use the `HelpReference` and `ArticleLink` components when implementing a drawer containing help information. These can be installed from `@ag.common/help-reference`
+
+```jsx
+<Text as="p">
+	Learn more about{' '}
+	<ArticleLink article="your-article">inviting a staff member</ArticleLink>
+</Text>
+```
+
+## Open in new tab
+
+Opening information in a new tab allows users to read related help content, without concern that they may lose their form data.
+
+Outside of forms, avoid opening links in new tabs. This can be confusing and disorienting for users. This is especially true for those who have trouble perceiving visual content. The exception would be if they are logged into a secure area and navigating away would require them to log in again.
+
+If the supporting information won’t fit into a drawer without scrolling, then open this form help content into a new tab.
+
+```jsx live
+<Text as="p">
+	For more information, go to{' '}
+	<TextLinkExternal href="#">
+		understanding safety requirements
+	</TextLinkExternal>
+</Text>
+```
+
+## Related guidance
+
+- [Field hints](/components/field#hint) – Short, in context help.
+- [Content styles - links](/content/content-styles#links) – Also known as hyperlinks, connects users to helpful, related content.
