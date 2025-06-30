@@ -31,7 +31,7 @@ This situation often occurs when users accidentally click a navigation link, use
 
 Use this pattern to help users avoid unintentionally discarding their work. This is especially important in forms, editable content, or processes that don’t autosave or can’t be resumed later.
 
-Browsers have restrictions on executing events when a user performs native browser actions like reloading or closing a tab. You will need to hook into the browser's `window.onbeforeunload` and `window.confirm` to prompt users who are leaving the page.
+Note: browsers have restrictions on executing events when a user performs native browser functions like reloading or closing a tab. You will also need to hook into the browser’s `window.onbeforeunload` event and use `window.confirm` to warn users they are about to leave the page.
 
 ## Why it matters
 
