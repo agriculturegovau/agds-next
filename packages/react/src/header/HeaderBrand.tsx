@@ -112,36 +112,42 @@ export function HeaderBrand({
 					<DividingLine dividerPosition={dividerPosition} />
 				)}
 
-				<Stack
-					as={Link}
-					color="text"
-					css={{
-						textDecoration: 'none',
-						':hover': packs.underline,
-					}}
-					focusRingFor="keyboard"
-					href={href}
-					justifyContent="center"
-				>
-					<Flex alignItems="flex-start" gap={0.5}>
-						<Text
-							fontSize={headingSizeMap[size]}
-							fontWeight="bold"
-							lineHeight="default"
-							maxWidth={tokens.maxWidth.bodyText}
-						>
-							{heading}
-						</Text>
+				{(heading || badgeLabel || subline) && (
+					<Stack
+						as={Link}
+						color="text"
+						css={{
+							textDecoration: 'none',
+							':hover': packs.underline,
+						}}
+						focusRingFor="keyboard"
+						href={href}
+						justifyContent="center"
+					>
+						{(heading || badgeLabel) && (
+							<Flex alignItems="flex-start" gap={0.5}>
+								{heading && (
+									<Text
+										fontSize={headingSizeMap[size]}
+										fontWeight="bold"
+										lineHeight="default"
+										maxWidth={tokens.maxWidth.bodyText}
+									>
+										{heading}
+									</Text>
+								)}
 
-						{badgeLabel && <HeaderBadge>{badgeLabel}</HeaderBadge>}
-					</Flex>
+								{badgeLabel && <HeaderBadge>{badgeLabel}</HeaderBadge>}
+							</Flex>
+						)}
 
-					{subline && (
-						<Text color="muted" fontSize={subHeadingSizeMap[size]}>
-							{subline}
-						</Text>
-					)}
-				</Stack>
+						{subline && (
+							<Text color="muted" fontSize={subHeadingSizeMap[size]}>
+								{subline}
+							</Text>
+						)}
+					</Stack>
+				)}
 			</Flex>
 		</Flex>
 	) : (
