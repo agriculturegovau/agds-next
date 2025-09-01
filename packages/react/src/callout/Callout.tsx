@@ -1,12 +1,18 @@
-import { ElementType, PropsWithChildren, ReactNode } from 'react';
+import {
+	cloneElement,
+	isValidElement,
+	type ElementType,
+	type PropsWithChildren,
+	type ReactNode,
+} from 'react';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
 import { CalloutTitle } from './CalloutTitle';
 import {
-	CalloutTone,
 	calloutToneMap,
-	CalloutVariant,
 	calloutVariantMap,
+	type CalloutTone,
+	type CalloutVariant,
 } from './utils';
 
 export type CalloutProps = PropsWithChildren<{
@@ -18,7 +24,7 @@ export type CalloutProps = PropsWithChildren<{
 	/** If the Callout component is placed on a page with `bodyAlt` background, set this prop to `true`. */
 	onBodyAlt?: boolean;
 	/** Title will appear in bold */
-	title?: string;
+	title?: ReactNode;
 	/** Tone will change the background color */
 	tone?: CalloutTone;
 	/** Variant will change the padding and gap */
@@ -58,7 +64,13 @@ export const Callout = ({
 		>
 			{iconProp || icon ? <Flex flexShrink={0}>{iconProp || icon}</Flex> : null}
 			<Stack css={{ paddingTop: titlePaddingTop }} gap={textGap}>
-				{title ? <CalloutTitle variant={variant}>{title}</CalloutTitle> : null}
+				{title ? (
+					isValidElement(title) ? (
+						cloneElement(title, { variant })
+					) : (
+						<CalloutTitle variant={variant}>{title}</CalloutTitle>
+					)
+				) : null}
 				{children}
 			</Stack>
 		</Flex>
