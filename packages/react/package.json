@@ -359,6 +359,9 @@
 		"react": "18.1.0",
 		"react-dom": "18.1.0"
 	},
+	"scripts": {
+		"prepublishOnly": "echo 'Publishing from local machine is disabled. Use CI/CD pipeline.' && echo 'Push changes to develop branch to trigger release process.' && exit 1"
+	},
 	"peerDependencies": {
 		"@emotion/react": "^11.7.0",
 		"react": "^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
