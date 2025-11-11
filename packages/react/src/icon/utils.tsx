@@ -9,8 +9,11 @@ import { ArrowUpDownIcon } from './icons/ArrowUpDownIcon';
 import { ArrowUpIcon } from './icons/ArrowUpIcon';
 import { AttachmentIcon } from './icons/AttachmentIcon';
 import { AvatarIcon } from './icons/AvatarIcon';
+import { BoxIcon } from './icons/BoxIcon';
 import { BusinessIcon } from './icons/BusinessIcon';
 import { CalendarIcon } from './icons/CalendarIcon';
+import { CameraIcon } from './icons/CameraIcon';
+import { CarIcon } from './icons/CarIcon';
 import { ChartBarIcon } from './icons/ChartBarIcon';
 import { ChartLineIcon } from './icons/ChartLineIcon';
 import { CheckIcon } from './icons/CheckIcon';
@@ -60,6 +63,9 @@ import { MoveRightIcon } from './icons/MoveRightIcon';
 import { PauseIcon } from './icons/PauseIcon';
 import { PermitIcon } from './icons/PermitIcon';
 import { PieChartIcon } from './icons/PieChartIcon';
+import { PlaneIcon } from './icons/PlaneIcon';
+import { PlaneLandingIcon } from './icons/PlaneLandingcopy';
+import { PlaneTakeoffIcon } from './icons/PlaneTakeoffIcon';
 import { PlayIcon } from './icons/PlayIcon';
 import { PlusIcon } from './icons/PlusIcon';
 import { PrintIcon } from './icons/PrintIcon';
@@ -68,12 +74,15 @@ import { ProgressDoingIcon } from './icons/ProgressDoingIcon';
 import { ProgressNotRequiredIcon } from './icons/ProgressNotRequiredIcon';
 import { ProgressPausedIcon } from './icons/ProgressPausedIcon';
 import { ProgressTodoIcon } from './icons/ProgressTodoIcon';
+import { RefreshCcwIcon } from './icons/RefreshCcwIcon';
 import { RotateLeftIcon } from './icons/RotateLeftIcon';
 import { RotateRightIcon } from './icons/RotateRightIcon';
 import { ScrollbarArrowLeftIcon } from './icons/ScrollbarArrowLeftIcon';
 import { ScrollbarArrowRightIcon } from './icons/ScrollbarArrowRightIcon';
 import { SearchIcon } from './icons/SearchIcon';
 import { SettingsIcon } from './icons/SettingsIcon';
+import { ShipIcon } from './icons/ShipIcon';
+import { ShippingContainerIcon } from './icons/ShippingContainerIcon';
 import { StarFilledIcon } from './icons/StarFilledIcon';
 import { StarIcon } from './icons/StarIcon';
 import { SuccessFilledIcon } from './icons/SuccessFilledIcon';
@@ -81,6 +90,7 @@ import { SuccessIcon } from './icons/SuccessIcon';
 import { ThumbsDownIcon } from './icons/ThumbsDownIcon';
 import { ThumbsUpIcon } from './icons/ThumbsUpIcon';
 import { TimerIcon } from './icons/TimerIcon';
+import { TruckIcon } from './icons/TruckIcon';
 import { TwitterIcon } from './icons/TwitterIcon';
 import { UnlockIcon } from './icons/UnlockIcon';
 import { UploadIcon } from './icons/UploadIcon';
@@ -107,18 +117,21 @@ export const allIcons = {
 	ArrowUpIcon,
 	AttachmentIcon,
 	AvatarIcon,
+	BoxIcon,
 	BusinessIcon,
 	CalendarIcon,
+	CameraIcon,
+	CarIcon,
 	ChartBarIcon,
 	ChartLineIcon,
 	CheckIcon,
 	ChevronDownIcon,
 	ChevronLeftIcon,
 	ChevronRightIcon,
+	ChevronUpIcon,
 	ChevronsLeftIcon,
 	ChevronsRightIcon,
 	ChevronsUpDownIcon,
-	ChevronUpIcon,
 	ClockIcon,
 	CloseIcon,
 	CodeIcon,
@@ -148,8 +161,8 @@ export const allIcons = {
 	InstagramIcon,
 	LicenceBusinessIcon,
 	LicenceIcon,
-	LinkedInIcon,
 	LinkIcon,
+	LinkedInIcon,
 	LockIcon,
 	MenuIcon,
 	MinusIcon,
@@ -158,6 +171,9 @@ export const allIcons = {
 	PauseIcon,
 	PermitIcon,
 	PieChartIcon,
+	PlaneIcon,
+	PlaneLandingIcon,
+	PlaneTakeoffIcon,
 	PlayIcon,
 	PlusIcon,
 	PrintIcon,
@@ -166,12 +182,15 @@ export const allIcons = {
 	ProgressNotRequiredIcon,
 	ProgressPausedIcon,
 	ProgressTodoIcon,
+	RefreshCcwIcon,
 	RotateLeftIcon,
 	RotateRightIcon,
 	ScrollbarArrowLeftIcon,
 	ScrollbarArrowRightIcon,
 	SearchIcon,
 	SettingsIcon,
+	ShipIcon,
+	ShippingContainerIcon,
 	StarFilledIcon,
 	StarIcon,
 	SuccessFilledIcon,
@@ -179,6 +198,7 @@ export const allIcons = {
 	ThumbsDownIcon,
 	ThumbsUpIcon,
 	TimerIcon,
+	TruckIcon,
 	TwitterIcon,
 	UnlockIcon,
 	UploadIcon,
