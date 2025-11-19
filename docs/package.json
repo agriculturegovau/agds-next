@@ -34,7 +34,7 @@
 		"remark-mdx-code-meta": "^2.0.0"
 	},
 	"devDependencies": {
-		"glob": "^10.3.3",
+		"glob": "^10.5.0",
 		"react-docgen-typescript": "^2.2.2"
 	}
 }
