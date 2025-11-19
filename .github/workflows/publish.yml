@@ -1,0 +1,46 @@
+name: Publish
+
+permissions:
+  id-token: write
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  publish:
+    name: Publish to NPM
+    runs-on: ubuntu-latest
+
+    # Prevents manual triggers on branches other than main
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.15.1
+          cache: 'yarn'
+          # Setting registry-url here handles the .npmrc auth setup automatically
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Publish to NPM
+        # yarn build is implicitly run as part of publish-changed
+        # Using the registry-url input above, actions/setup-node automatically creates
+        # the .npmrc with the correct NODE_AUTH_TOKEN env var mapping.
+        run: yarn publish-changed
+        env:
+          # actions/setup-node expects NODE_AUTH_TOKEN, but we map your secret to it
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # Keep NPM_TOKEN if your custom script specifically looks for that variable
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
