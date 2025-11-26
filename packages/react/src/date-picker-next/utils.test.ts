@@ -324,7 +324,8 @@ describe('isValidDate', () => {
 
 	describe('minDate', () => {
 		test('returns true when it’s a valid date', () => {
-			expect(isValidDate(new Date(), { minDate: new Date() })).toEqual(true);
+			const fixedDate = new Date();
+			expect(isValidDate(fixedDate, { minDate: fixedDate })).toEqual(true);
 			expect(isValidDate('31/01/1950', { minDate: '31/01/1950' })).toEqual(
 				true
 			);

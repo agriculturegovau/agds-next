@@ -1,6 +1,6 @@
 {
 	"name": "@ag.ds-next/react",
-	"version": "1.30.0",
+	"version": "1.31.0",
 	"license": "MIT",
 	"exports": {
 		"./box": {
@@ -340,6 +340,9 @@
 			"default": "./conditional-field-container/dist/ag.ds-next-react-conditional-field-container.cjs.js"
 		},
 		"./package.json": "./package.json"
+	},
+	"scripts": {
+		"prepublishOnly": "echo 'Publishing from local machine is disabled. Use CI/CD pipeline.' && echo 'Push changes to develop branch to trigger release process.' && exit 1"
 	},
 	"dependencies": {
 		"@babel/runtime": "^7.27.1",
