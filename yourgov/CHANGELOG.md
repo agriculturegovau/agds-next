@@ -1,5 +1,13 @@
 # @ag.ds-next/yourgov
 
+## 0.10.1
+
+### Patch Changes
+
+- 93a774157f0: Add cross platform prepublishOnly script using Node.js to block local npm publishing while allowing CI/CD pipeline via the CI environment variable
+- Updated dependencies [93a774157f0]
+  - @ag.ds-next/react@1.31.1
+
 ## 0.10.0
 
 ### Minor Changes

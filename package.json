@@ -34,7 +34,7 @@
 		"new:package": "plop --plopfile scripts/new-package.mjs && yarn format && yarn manypkg fix && preconstruct fix && yarn install",
 		"playroom:build": "yarn --cwd docs playroom:build",
 		"playroom:dev": "yarn --cwd docs playroom:dev",
-		"prepublishOnly": "echo 'Publishing from local machine is disabled. Use CI/CD pipeline.' && echo 'Push changes to develop branch to trigger release process.' && exit 1",
+		"prepublishOnly": "node scripts/check-ci.js",
 		"publish-changed": "yarn build && yarn changeset publish",
 		"storybook:build": "storybook build -o docs/public/storybook",
 		"storybook:dev": "storybook dev --port 6006 --no-open",
