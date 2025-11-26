@@ -342,7 +342,7 @@
 		"./package.json": "./package.json"
 	},
 	"scripts": {
-		"prepublishOnly": "echo 'Publishing from local machine is disabled. Use CI/CD pipeline.' && echo 'Push changes to develop branch to trigger release process.' && exit 1"
+		"prepublishOnly": "node ../../scripts/check-ci.js"
 	},
 	"dependencies": {
 		"@babel/runtime": "^7.27.1",
