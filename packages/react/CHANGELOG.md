@@ -1,5 +1,11 @@
 # @ag.ds-next/react
 
+## 1.31.1
+
+### Patch Changes
+
+- 93a774157f0: Add cross platform prepublishOnly script using Node.js to block local npm publishing while allowing CI/CD pipeline via the CI environment variable
+
 ## 1.31.0
 
 ### Minor Changes
