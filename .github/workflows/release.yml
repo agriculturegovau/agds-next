@@ -1,10 +1,5 @@
 name: Release
 
-# Explicit permissions for security
-permissions:
-  contents: read
-  pull-requests: write
-
 on:
   push:
     branches:
