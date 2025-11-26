@@ -1,5 +1,24 @@
 # @ag.ds-next/react
 
+## 1.31.0
+
+### Minor Changes
+
+- 9077a67ec42: icon: add new icons: Plane, PlaneTakeoff, PlaneLanding, Car, Truck, Ship, ShippingContainer, Box, Camera, RefreshCcw
+
+### Patch Changes
+
+- 2eb378d3dbf: feat: add automated NPM publishing with GitHub Actions
+
+  - Implement test-and-publish workflow with changesets integration
+  - Add automated Release PR creation from develop branch
+  - Configure secure permissions and NPM authentication
+  - Optimize CI/CD with caching and parallel testing
+  - Replace manual versioning with changeset-driven releases
+  - Add prepublishOnly scripts to prevent manual publishing
+
+  Requires: NPM_TOKEN secret for publishing to @ag.ds-next registry
+
 ## 1.30.0
 
 ### Minor Changes
