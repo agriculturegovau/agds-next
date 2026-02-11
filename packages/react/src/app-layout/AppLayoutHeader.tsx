@@ -40,6 +40,8 @@ export type AppLayoutHeaderProps = {
 	secondLogo?: ReactElement;
 	/** Used to provide additional information to describe your website or service. */
 	subLine?: string;
+	/** Used to indicate status, such as 'connection offline' */
+	statusIndicator?: ReactNode;
 };
 
 export function AppLayoutHeader({
@@ -56,6 +58,7 @@ export function AppLayoutHeader({
 	secondHref,
 	secondLogo,
 	subLine,
+	statusIndicator,
 }: AppLayoutHeaderProps) {
 	return (
 		<Flex
@@ -93,11 +96,23 @@ export function AppLayoutHeader({
 					secondLogo={secondLogo}
 					subLine={subLine}
 				/>
-				<Box display={{ xs: 'none', [APP_LAYOUT_DESKTOP_BREAKPOINT]: 'flex' }}>
-					{accountDetails ? (
-						<AppLayoutHeaderAccount {...accountDetails} />
-					) : null}
-				</Box>
+
+				<Flex
+					alignItems={'center'}
+					alignSelf={{ xs: 'start', [APP_LAYOUT_DESKTOP_BREAKPOINT]: 'center' }}
+					gap={1}
+					paddingTop={{ xs: 0.5, [APP_LAYOUT_DESKTOP_BREAKPOINT]: 0 }}
+				>
+					{statusIndicator ? statusIndicator : null}
+
+					<Box
+						display={{ xs: 'none', [APP_LAYOUT_DESKTOP_BREAKPOINT]: 'flex' }}
+					>
+						{accountDetails ? (
+							<AppLayoutHeaderAccount {...accountDetails} />
+						) : null}
+					</Box>
+				</Flex>
 			</Flex>
 			<AppLayoutHeaderNav accountDetails={accountDetails} />
 		</Flex>
