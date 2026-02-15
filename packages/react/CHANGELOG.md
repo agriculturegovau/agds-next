@@ -1,5 +1,12 @@
 # @ag.ds-next/react
 
+## 1.32.0
+
+### Minor Changes
+
+- 949a782dd70: icon: add new icons -- WifiIcon, WifiOffIcon, TractorIcon
+- e73a26ec7dc: app-layout-header: add statusIndicator support
+
 ## 1.31.1
 
 ### Patch Changes
