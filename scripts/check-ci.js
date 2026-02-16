@@ -4,7 +4,9 @@
 // Prevents publishing from local machines
 
 if (!process.env.CI) {
-  console.error('Publishing from local machine is disabled.');
-  console.error('Push changes to main branch to trigger the CI/CD release process.');
-  process.exit(1);
+	console.error('Publishing from local machine is disabled.');
+	console.error(
+		'Push changes to main branch to trigger the CI/CD release process.'
+	);
+	process.exit(1);
 }

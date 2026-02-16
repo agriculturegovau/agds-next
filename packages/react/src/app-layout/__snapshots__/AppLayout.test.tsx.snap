@@ -74,66 +74,70 @@ exports[`AppLayout renders correctly 1`] = `
           </div>
         </a>
         <div
-          class="css-xhs7no-boxStyles"
+          class="css-1b4ce1s-boxStyles"
         >
-          <button
-            aria-controls="dropdown-menu-:r0:-panel"
-            aria-expanded="false"
-            aria-haspopup="true"
-            class="css-1ycf44d-BaseButton-boxStyles-AppLayoutHeaderAccountDropdownButton"
-            id="dropdown-menu-:r0:-button"
-            type="button"
-          >
-            <span
-              class="css-avudkd-VisuallyHidden"
-            >
-              Account menu
-            </span>
-            <span
-              aria-hidden="true"
-              class="css-1hgloe3-boxStyles-AppLayoutHeaderAccountDropdownButton"
-            >
-              <span
-                class="css-1cow25h-boxStyles-Avatar"
-              >
-                TW
-              </span>
-              <span
-                class="css-hv1d8s-boxStyles-AppLayoutHeaderAccountDropdownButton"
-              >
-                <span
-                  class="css-1y364x7-boxStyles-AppLayoutHeaderAccountDropdownButton"
-                >
-                  Toto Wolff
-                </span>
-                <span
-                  class="css-wu5zwp-boxStyles-AppLayoutHeaderAccountDropdownButton"
-                >
-                  My account
-                </span>
-              </span>
-            </span>
-            <svg
-              aria-hidden="true"
-              class="css-1iepaxb-AppLayoutHeaderAccountDropdownButton"
-              clip-rule="evenodd"
-              fill-rule="evenodd"
-              focusable="false"
-              height="24"
-              role="img"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="m6 9 6 6 6-6"
-              />
-            </svg>
-          </button>
           <div
-            class="css-oz9h9h-DropdownMenuPanel"
-            id="dropdown-menu-:r0:-panel"
-          />
+            class="css-xhs7no-boxStyles"
+          >
+            <button
+              aria-controls="dropdown-menu-:r0:-panel"
+              aria-expanded="false"
+              aria-haspopup="true"
+              class="css-1ycf44d-BaseButton-boxStyles-AppLayoutHeaderAccountDropdownButton"
+              id="dropdown-menu-:r0:-button"
+              type="button"
+            >
+              <span
+                class="css-avudkd-VisuallyHidden"
+              >
+                Account menu
+              </span>
+              <span
+                aria-hidden="true"
+                class="css-1hgloe3-boxStyles-AppLayoutHeaderAccountDropdownButton"
+              >
+                <span
+                  class="css-1cow25h-boxStyles-Avatar"
+                >
+                  TW
+                </span>
+                <span
+                  class="css-hv1d8s-boxStyles-AppLayoutHeaderAccountDropdownButton"
+                >
+                  <span
+                    class="css-1y364x7-boxStyles-AppLayoutHeaderAccountDropdownButton"
+                  >
+                    Toto Wolff
+                  </span>
+                  <span
+                    class="css-wu5zwp-boxStyles-AppLayoutHeaderAccountDropdownButton"
+                  >
+                    My account
+                  </span>
+                </span>
+              </span>
+              <svg
+                aria-hidden="true"
+                class="css-1iepaxb-AppLayoutHeaderAccountDropdownButton"
+                clip-rule="evenodd"
+                fill-rule="evenodd"
+                focusable="false"
+                height="24"
+                role="img"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m6 9 6 6 6-6"
+                />
+              </svg>
+            </button>
+            <div
+              class="css-oz9h9h-DropdownMenuPanel"
+              id="dropdown-menu-:r0:-panel"
+            />
+          </div>
         </div>
       </div>
       <div

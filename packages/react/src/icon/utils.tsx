@@ -90,6 +90,7 @@ import { SuccessIcon } from './icons/SuccessIcon';
 import { ThumbsDownIcon } from './icons/ThumbsDownIcon';
 import { ThumbsUpIcon } from './icons/ThumbsUpIcon';
 import { TimerIcon } from './icons/TimerIcon';
+import { TractorIcon } from './icons/TractorIcon';
 import { TruckIcon } from './icons/TruckIcon';
 import { TwitterIcon } from './icons/TwitterIcon';
 import { UnlockIcon } from './icons/UnlockIcon';
@@ -100,6 +101,8 @@ import { WarningCircleIcon } from './icons/WarningCircleIcon';
 import { WarningFilledIcon } from './icons/WarningFilledIcon';
 import { WarningIcon } from './icons/WarningIcon';
 import { WebsiteIcon } from './icons/WebsiteIcon';
+import { WifiIcon } from './icons/WifiIcon';
+import { WifiOffIcon } from './icons/WifiOffIcon';
 import { XIcon } from './icons/XIcon';
 import { YouTubeIcon } from './icons/YouTubeIcon';
 import { ZoomInIcon } from './icons/ZoomInIcon';
@@ -198,6 +201,7 @@ export const allIcons = {
 	ThumbsDownIcon,
 	ThumbsUpIcon,
 	TimerIcon,
+	TractorIcon,
 	TruckIcon,
 	TwitterIcon,
 	UnlockIcon,
@@ -208,6 +212,8 @@ export const allIcons = {
 	WarningFilledIcon,
 	WarningIcon,
 	WebsiteIcon,
+	WifiIcon,
+	WifiOffIcon,
 	XIcon,
 	YouTubeIcon,
 	ZoomInIcon,
