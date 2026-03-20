@@ -9,7 +9,9 @@ import {
 	SyntheticEvent,
 } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
+import Link, { LinkProps } from 'next/link';
 import { Logo } from '../ag-branding';
+import { Button, ButtonGroup, ButtonLink } from '../button';
 import { PageContent } from '../content';
 import { CoreProvider, tokens } from '../core';
 import { LinkList } from '../link-list';
@@ -17,6 +19,8 @@ import { SkipLinks } from '../skip-link';
 import { Text } from '../text';
 import { Prose } from '../prose';
 import { GlobalAlert } from '../global-alert';
+import { Modal } from '../modal';
+import { Switch } from '../switch';
 import {
 	navigationItems,
 	ExampleAccountDropdown,
@@ -32,11 +36,6 @@ import {
 	AppLayoutFooterDivider,
 	AppLayoutSidebarProps,
 } from './index';
-
-import Link, { LinkProps } from 'next/link';
-import { Modal } from '../modal';
-import { Button, ButtonGroup, ButtonLink } from '../button';
-import { Switch } from '../switch';
 
 function AppLayoutTemplate({
 	activePath = '/',
@@ -237,6 +236,7 @@ type InterruptContext = {
 	interrupt?: (target: string, e: SyntheticEvent) => void;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 const closedModal: ModalStatus = { open: false, close: () => {} };
 
 const InterruptContext = createContext<InterruptContext>({
@@ -273,19 +273,19 @@ const InterruptModal = () => {
 		// This provider ensures that links in the modal are not captured
 		<InterruptProvider active={false}>
 			<Modal
-				isOpen={modal.open}
-				onClose={modal.close}
-				title="Are you sure you want to continue?"
 				actions={
 					<ButtonGroup>
 						{modal.open ? (
 							<ButtonLink href={modal.target}>Yes, continue</ButtonLink>
 						) : null}
-						<Button variant="secondary" onClick={modal.close}>
+						<Button onClick={modal.close} variant="secondary">
 							No, take me back
 						</Button>
 					</ButtonGroup>
 				}
+				isOpen={modal.open}
+				onClose={modal.close}
+				title="Are you sure you want to continue?"
 			>
 				<Text as="p">
 					If you continue, you will lose all information entered.
@@ -302,7 +302,8 @@ const InterruptLinkComponent = forwardRef<HTMLAnchorElement, FormLinkProps>(
 		const interrupt = useInterrupt();
 
 		if (!href) return <a ref={ref} {...props} />;
-		const hrefAsString = typeof href === 'string' ? href : href?.pathname!;
+		const hrefAsString = typeof href === 'string' ? href : href?.pathname;
+		if (!hrefAsString) return <a ref={ref} {...props} />;
 
 		return (
 			<Link
@@ -318,25 +319,27 @@ const InterruptLinkComponent = forwardRef<HTMLAnchorElement, FormLinkProps>(
 	}
 );
 
-export const FormInterrupt: StoryObj<typeof AppLayout> = {
-	render: () => {
-		const [changed, setChanged] = useState(false);
+const FormInterruptStory = () => {
+	const [changed, setChanged] = useState(false);
 
-		return (
-			<>
-				<InterruptProvider active={changed}>
-					<CoreProvider linkComponent={InterruptLinkComponent}>
-						<AppLayoutTemplate subLevelVisible="always">
-							<Switch
-								label="form data has changed (prevents navigation)"
-								checked={changed}
-								onChange={setChanged}
-							/>
-						</AppLayoutTemplate>
-						<InterruptModal />
-					</CoreProvider>
-				</InterruptProvider>
-			</>
-		);
-	},
+	return (
+		<>
+			<InterruptProvider active={changed}>
+				<CoreProvider linkComponent={InterruptLinkComponent}>
+					<AppLayoutTemplate subLevelVisible="always">
+						<Switch
+							checked={changed}
+							label="form data has changed (prevents navigation)"
+							onChange={setChanged}
+						/>
+					</AppLayoutTemplate>
+					<InterruptModal />
+				</CoreProvider>
+			</InterruptProvider>
+		</>
+	);
+};
+
+export const FormInterrupt: StoryObj<typeof AppLayout> = {
+	render: FormInterruptStory,
 };
