@@ -7,10 +7,9 @@ import {
 	useMemo,
 	useState,
 	SyntheticEvent,
-	ComponentProps,
 } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import Link, { LinkProps } from 'next/link';
+import Link from 'next/link';
 import { Logo } from '../ag-branding';
 import { Button, ButtonGroup, ButtonLink } from '../button';
 import { PageContent } from '../content';
