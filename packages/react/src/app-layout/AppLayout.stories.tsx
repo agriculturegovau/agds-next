@@ -313,9 +313,13 @@ const InterruptLinkComponent = forwardRef<HTMLAnchorElement, FormLinkProps>(
 			<Link
 				href={href}
 				// and this handler
-				onClick={(e) => {
-					return interrupt?.(hrefAsString, e);
-				}}
+				onClick={
+					interrupt
+						? (e) => {
+								interrupt(hrefAsString, e);
+						  }
+						: undefined
+				}
 				ref={ref}
 				{...props}
 			/>
