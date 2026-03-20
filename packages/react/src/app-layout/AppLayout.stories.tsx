@@ -21,6 +21,7 @@ import { Prose } from '../prose';
 import { GlobalAlert } from '../global-alert';
 import { Modal } from '../modal';
 import { Switch } from '../switch';
+import { LinkComponentProps } from '../../../../.storybook/components/LinkComponent';
 import {
 	navigationItems,
 	ExampleAccountDropdown,
@@ -36,10 +37,6 @@ import {
 	AppLayoutFooterDivider,
 	AppLayoutSidebarProps,
 } from './index';
-import {
-	LinkComponent,
-	LinkComponentProps,
-} from '../../../../.storybook/components/LinkComponent';
 
 function AppLayoutTemplate({
 	activePath = '/',
@@ -302,9 +299,9 @@ export const InterruptLinkComponent = forwardRef<
 	HTMLAnchorElement,
 	LinkComponentProps
 >(function LinkComponent({ href, ...props }, ref) {
-	if (!href) return <a ref={ref} {...props} />;
-
 	const interrupt = useInterrupt();
+
+	if (!href) return <a ref={ref} {...props} />;
 
 	// Use an `a` tag when linking externally
 	// Regex finds links starting with: `http://` | `https://` | `//`
