@@ -236,8 +236,12 @@ type InterruptContext = {
 	interrupt?: (target: string, e: SyntheticEvent) => void;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-const closedModal: ModalStatus = { open: false, close: () => {} };
+const closedModal: ModalStatus = {
+	open: false,
+	close: () => {
+		// intentionally left empty
+	},
+};
 
 const InterruptContext = createContext<InterruptContext>({
 	modal: closedModal,
