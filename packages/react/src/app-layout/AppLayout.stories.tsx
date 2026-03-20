@@ -7,6 +7,7 @@ import {
 	useMemo,
 	useState,
 	SyntheticEvent,
+	ComponentProps,
 } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import Link, { LinkProps } from 'next/link';
@@ -36,6 +37,10 @@ import {
 	AppLayoutFooterDivider,
 	AppLayoutSidebarProps,
 } from './index';
+import {
+	LinkComponent,
+	LinkComponentProps,
+} from '../../../../.storybook/components/LinkComponent';
 
 function AppLayoutTemplate({
 	activePath = '/',
@@ -221,12 +226,6 @@ export const LevelTwoAlwaysOpen: StoryObj<typeof AppLayout> = {
 	render: (args) => <AppLayoutTemplate {...args} subLevelVisible="always" />,
 };
 
-type NextLinkProps = Omit<LinkProps, 'as' | 'href'>;
-
-type FormLinkProps = PropsWithChildren<NextLinkProps> & {
-	href?: LinkProps['href'];
-};
-
 type ModalStatus =
 	| { open: true; close: () => void; target: string }
 	| { open: false; close: () => void };
@@ -300,32 +299,37 @@ const InterruptModal = () => {
 };
 
 // You should already have this somewhere in your codebase.
-const InterruptLinkComponent = forwardRef<HTMLAnchorElement, FormLinkProps>(
-	function LinkComponent({ href, ...props }, ref) {
-		// add a hook like this
-		const interrupt = useInterrupt();
+export const InterruptLinkComponent = forwardRef<
+	HTMLAnchorElement,
+	LinkComponentProps
+>(function LinkComponent({ href, ...props }, ref) {
+	if (!href) return <a ref={ref} {...props} />;
 
-		if (!href) return <a ref={ref} {...props} />;
-		const hrefAsString = typeof href === 'string' ? href : href?.pathname;
-		if (!hrefAsString) return <a ref={ref} {...props} />;
+	const interrupt = useInterrupt();
 
+	// Use an `a` tag when linking externally
+	// Regex finds links starting with: `http://` | `https://` | `//`
+	const hrefAsString = typeof href === 'string' ? href : href?.pathname;
+	if (hrefAsString && /^(https?:\/\/|\/\/)/i.test(hrefAsString)) {
 		return (
-			<Link
-				href={href}
-				// and this handler
-				onClick={
-					interrupt
-						? (e) => {
-								interrupt(hrefAsString, e);
-						  }
-						: undefined
-				}
+			<a
+				href={hrefAsString}
+				onClick={(e) => interrupt?.(hrefAsString, e)}
 				ref={ref}
 				{...props}
 			/>
 		);
 	}
-);
+
+	return (
+		<Link
+			href={href}
+			onClick={(e) => interrupt?.(hrefAsString ?? '/todo', e)}
+			ref={ref}
+			{...props}
+		/>
+	);
+});
 
 const FormInterruptStory = () => {
 	const [changed, setChanged] = useState(false);
