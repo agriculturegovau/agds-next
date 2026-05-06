@@ -116,6 +116,15 @@ export const WithAccountLinkLongName: Story = {
 	},
 };
 
+export const WithAvatarName: Story = {
+	args: {
+		accountDetails: {
+			...accountDetails,
+			avatarName: exampleData.userNames.medium,
+		},
+	},
+};
+
 export const CoBranding: Story = {
 	args: {
 		secondHref: '/',

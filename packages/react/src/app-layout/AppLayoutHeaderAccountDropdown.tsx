@@ -13,19 +13,26 @@ import { ChevronDownIcon } from '../icon';
 import { scaleIconOnHover } from '../icon/Icon';
 import { Text } from '../text';
 
-export type AppLayoutHeaderAccountDropdownProps = PropsWithChildren<{
+// subset of fields from AppLayoutHeaderProps.accountDetails
+type AppLayoutHeaderAccountDropdownButtonProps = {
 	name: string;
+	avatarName?: string;
 	secondaryText?: string;
-}>;
+};
+
+export type AppLayoutHeaderAccountDropdownProps =
+	PropsWithChildren<AppLayoutHeaderAccountDropdownButtonProps>;
 
 export function AppLayoutHeaderAccountDropdown({
 	children,
 	name,
+	avatarName,
 	secondaryText,
 }: AppLayoutHeaderAccountDropdownProps) {
 	return (
 		<DropdownMenu popoverOffset={-8} popoverPlacement="bottom-end">
 			<AppLayoutHeaderAccountDropdownButton
+				avatarName={avatarName}
 				name={name}
 				secondaryText={secondaryText}
 			/>
@@ -34,13 +41,9 @@ export function AppLayoutHeaderAccountDropdown({
 	);
 }
 
-type AppLayoutHeaderAccountDropdownButtonProps = {
-	name: string;
-	secondaryText?: string;
-};
-
 function AppLayoutHeaderAccountDropdownButton({
 	name,
+	avatarName,
 	secondaryText,
 }: AppLayoutHeaderAccountDropdownButtonProps) {
 	const { isMenuOpen } = useDropdownMenuContext();
@@ -97,7 +100,7 @@ function AppLayoutHeaderAccountDropdownButton({
 				gap={0.5}
 				width="100%"
 			>
-				<Avatar name={name} size="md" tone="action" />
+				<Avatar name={avatarName ?? name} size="md" tone="action" />
 				<Flex
 					as="span"
 					css={{ overflow: 'hidden' }}
