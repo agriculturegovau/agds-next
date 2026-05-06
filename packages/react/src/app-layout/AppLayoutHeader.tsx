@@ -12,6 +12,8 @@ export type AppLayoutHeaderProps = {
 	accountDetails?: {
 		/** The name of the authenticated user. */
 		name: string;
+		/** The name to display in the avatar element; if not provided, it defaults to the 'name' field. */
+		avatarName?: string;
 		/** Displayed under the users name if needed e.g. to show the business name. */
 		secondaryText?: string;
 		/** The href to link to, for example "/account". */

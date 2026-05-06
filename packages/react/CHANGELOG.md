@@ -1,5 +1,11 @@
 # @ag.ds-next/react
 
+## 1.33.0
+
+### Minor Changes
+
+- 3f9922f55db: app-layout-header: add avatarName field to allow customisation of avatar element
+
 ## 1.32.0
 
 ### Minor Changes
