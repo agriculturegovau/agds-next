@@ -1,0 +1,16 @@
+<svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="8" y="8" width="6" height="56" fill="#808080"></rect>
+<rect x="58" y="8" width="6" height="56" fill="#808080"></rect>
+<rect x="33" y="-17" width="6" height="56" transform="translate(25 47) rotate(-90)" fill="#808080"></rect>
+<rect x="33" y="33" width="6" height="56" transform="translate(-25 97) rotate(-90)" fill="#808080"></rect>
+<rect x="18" y="18" width="36" height="4" fill="#808080"></rect>
+<rect x="18" y="34" width="30" height="4" fill="#808080"></rect>
+<rect x="48.26" y="45.62" width="3.21" height="8.49" transform="translate(49.87 -20.66) rotate(45)" fill="#00558B"></rect>
+<rect x="48.26" y="41.89" width="3.21" height="8.49" transform="translate(-18.02 48.77) rotate(-45)" fill="#00558B"></rect>
+<path d="M8,8V64H64V8ZM58,58H14V14H58Z" fill="#808080"></path>
+<rect x="18" y="26" width="30" height="4" fill="#808080"></rect>
+<rect x="18" y="18" width="36" height="4" fill="#808080"></rect>
+<rect x="18" y="34" width="36" height="4" fill="#808080"></rect>
+<polygon points="47.5 41.5 45.23 43.77 47.47 46 38 46 38 50 47.47 50 45.23 52.23 47.5 54.5 54 48 47.5 41.5" fill="#00558B"></polygon>
+<polygon points="26.77 43.77 24.5 41.5 18 48 24.5 54.5 26.77 52.23 24.54 50 34 50 34 46 24.54 46 26.77 43.77" fill="#00558B"></polygon>
+</svg>
