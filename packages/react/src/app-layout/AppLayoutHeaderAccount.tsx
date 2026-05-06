@@ -12,6 +12,7 @@ export type AppLayoutHeaderAccountProps = NonNullable<
 
 export function AppLayoutHeaderAccount({
 	name,
+	avatarName,
 	secondaryText,
 	href,
 	dropdown,
@@ -27,7 +28,11 @@ export function AppLayoutHeaderAccount({
 	// Dropdown component
 	if (dropdown) {
 		return (
-			<AppLayoutHeaderAccountDropdown name={name} secondaryText={secondaryText}>
+			<AppLayoutHeaderAccountDropdown
+				avatarName={avatarName}
+				name={name}
+				secondaryText={secondaryText}
+			>
 				{dropdown}
 			</AppLayoutHeaderAccountDropdown>
 		);
