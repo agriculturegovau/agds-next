@@ -3,6 +3,7 @@ import { Box } from '../box';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
 import { boxPalette, print, tokens } from '../core';
+import { Content } from '../content';
 import { WarningFilledIcon, InfoFilledIcon } from '../icon';
 import { Heading } from '../heading';
 import { getOptionalCloseHandler } from '../getCloseHandler';
@@ -17,6 +18,7 @@ export type GlobalAlertProps = PropsWithChildren<{
 	title?: string;
 	/** The tone of the alert. */
 	tone?: GlobalAlertTone;
+	variant?: 'regular' | 'compact';
 }>;
 
 export function GlobalAlert({
@@ -25,6 +27,7 @@ export function GlobalAlert({
 	onClose,
 	title,
 	tone = 'warning',
+	variant = 'regular',
 }: GlobalAlertProps) {
 	const { ariaLabel, bg, fg, Icon } = toneMap[tone];
 
@@ -32,6 +35,64 @@ export function GlobalAlert({
 
 	const addTitleMargin = Boolean(closeHandler);
 	const addContentMargin = Boolean(closeHandler && !title);
+
+	if (variant === 'compact') {
+		return (
+			<Box
+				aria-label={title || ariaLabel}
+				as="section"
+				borderColor={tone}
+				borderTop
+				borderTopWidth="xl"
+				css={{ backgroundColor: bg }}
+				highContrastOutline
+			>
+				<Content>
+					<Flex
+						alignItems="flex-start"
+						css={{ position: 'relative' }}
+						flexGrow={1}
+						gap={1}
+						paddingY={1.5}
+					>
+						<Icon aria-hidden="false" aria-label={ariaLabel} color={tone} />
+
+						<Stack flexGrow={1} gap={0.75}>
+							{title ? (
+								<Heading
+									as="h2"
+									css={{
+										...(addTitleMargin && {
+											marginRight: '2.5rem', // (1.5rem icon + 1rem gap)
+											[tokens.mediaQuery.min.lg]: { marginRight: 0 },
+										}),
+									}}
+									maxWidth={tokens.maxWidth.bodyText}
+									type="h3"
+								>
+									{title}
+								</Heading>
+							) : null}
+							<Box
+								css={{
+									...(addContentMargin && {
+										marginRight: '2.5rem', // (1.5rem icon + 1rem gap)
+										[tokens.mediaQuery.min.lg]: { marginRight: 0 },
+									}),
+								}}
+								maxWidth={tokens.maxWidth.container}
+							>
+								{children}
+							</Box>
+						</Stack>
+						{closeHandler ? (
+							<GlobalAlertCloseButton onClick={closeHandler} />
+						) : null}
+					</Flex>
+				</Content>
+			</Box>
+		);
+	}
 
 	return (
 		<Flex
