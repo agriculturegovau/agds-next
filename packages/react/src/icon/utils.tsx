@@ -51,6 +51,7 @@ import { InboxIcon } from './icons/InboxIcon';
 import { InfoFilledIcon } from './icons/InfoFilledIcon';
 import { InfoIcon } from './icons/InfoIcon';
 import { InstagramIcon } from './icons/InstagramIcon';
+import { InvoiceIcon } from './icons/InvoiceIcon';
 import { LicenceBusinessIcon } from './icons/LicenceBusinessIcon';
 import { LicenceIcon } from './icons/LicenceIcon';
 import { LinkedInIcon } from './icons/LinkedInIcon';
@@ -64,7 +65,7 @@ import { PauseIcon } from './icons/PauseIcon';
 import { PermitIcon } from './icons/PermitIcon';
 import { PieChartIcon } from './icons/PieChartIcon';
 import { PlaneIcon } from './icons/PlaneIcon';
-import { PlaneLandingIcon } from './icons/PlaneLandingcopy';
+import { PlaneLandingIcon } from './icons/PlaneLandingIcon';
 import { PlaneTakeoffIcon } from './icons/PlaneTakeoffIcon';
 import { PlayIcon } from './icons/PlayIcon';
 import { PlusIcon } from './icons/PlusIcon';
@@ -162,6 +163,7 @@ export const allIcons = {
 	InfoFilledIcon,
 	InfoIcon,
 	InstagramIcon,
+	InvoiceIcon,
 	LicenceBusinessIcon,
 	LicenceIcon,
 	LinkIcon,

@@ -1,5 +1,11 @@
 # @ag.ds-next/react
 
+## 1.34.0
+
+### Minor Changes
+
+- c718b0e09a2: icons: add InvoiceIcon
+
 ## 1.33.0
 
 ### Minor Changes
