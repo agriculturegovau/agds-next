@@ -267,6 +267,10 @@
 			"module": "./control-input/dist/ag.ds-next-react-control-input.esm.js",
 			"default": "./control-input/dist/ag.ds-next-react-control-input.cjs.js"
 		},
+		"./daff-branding": {
+			"module": "./daff-branding/dist/ag.ds-next-react-daff-branding.esm.js",
+			"default": "./daff-branding/dist/ag.ds-next-react-daff-branding.cjs.js"
+		},
 		"./dropdown-menu": {
 			"module": "./dropdown-menu/dist/ag.ds-next-react-dropdown-menu.esm.js",
 			"default": "./dropdown-menu/dist/ag.ds-next-react-dropdown-menu.cjs.js"

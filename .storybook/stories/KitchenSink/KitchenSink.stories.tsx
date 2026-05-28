@@ -148,23 +148,23 @@ const sideNavItems = [
 const backgroundMapper = {
 	body: {
 		page: 'body',
-		opposite: 'bodyAlt',
+		banner: 'shade',
 	},
 	bodyAlt: {
 		page: 'bodyAlt',
-		opposite: 'body',
+		banner: 'shadeAlt',
 	},
 } as const;
 
 type KitchenSinkProps = { background: 'body' | 'bodyAlt' };
 
 function KitchenSink({ background }: KitchenSinkProps) {
-	const { page, opposite } = backgroundMapper[background];
+	const { page, banner } = backgroundMapper[background];
 	const [isModalOpen, openModal, closeModal] = useTernaryState(false);
 	const [isDrawerOpen, openDrawer, closeDrawer] = useTernaryState(false);
 	return (
 		<Fragment>
-			<HeroBanner background={opposite}>
+			<HeroBanner background={banner}>
 				<HeroBannerTitleContainer>
 					<HeroBannerTitle>
 						Website hero banner title - xxxl/display (H1)
@@ -857,14 +857,18 @@ export const WesbsiteLayout = {
 	name: 'Website layout',
 	render: (args: KitchenSinkProps) => (
 		<Fragment>
-			<GlobalAlert onClose={console.log} title="Scheduled outage">
+			<GlobalAlert
+				onClose={console.log}
+				title="Scheduled outage"
+				variant="compact"
+			>
 				<Text as="p">
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
 					nibh, aliquam vel dolor non, gravida porttitor nulla. Pellentesque
 					cursus orci vulputate nibh sagittis blandit.
 				</Text>
 			</GlobalAlert>
-			<SiteLayout>
+			<SiteLayout palette="light">
 				<KitchenSink {...args} />
 			</SiteLayout>
 		</Fragment>
@@ -882,7 +886,7 @@ export const ApplicationLayout = {
 					cursus orci vulputate nibh sagittis blandit.
 				</Text>
 			</GlobalAlert>
-			<AppLayout>
+			<AppLayout background="body" palette="light">
 				<KitchenSink {...args} />
 			</AppLayout>
 		</Fragment>

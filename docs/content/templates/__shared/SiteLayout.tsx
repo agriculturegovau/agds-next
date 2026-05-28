@@ -18,11 +18,22 @@ export const MAIN_CONTENT_ATTRS = {
 	css: { '&:focus': { outline: 'none' } },
 };
 
+const media = {
+	leaf: 'https://static-content.p5.agriculture.gov.au/agds/brand-leaf.png',
+	artwork:
+		'https://static-content.p5.agriculture.gov.au/agds/brand-artwork.png',
+};
+
 export const SiteLayout = ({
 	applyMainElement = true,
 	focusMode,
+	palette = 'dark',
 	children,
-}: PropsWithChildren<{ focusMode?: boolean; applyMainElement?: boolean }>) => (
+}: PropsWithChildren<{
+	focusMode?: boolean;
+	applyMainElement?: boolean;
+	palette?: 'light' | 'dark';
+}>) => (
 	<>
 		<SkipLinks
 			links={
@@ -35,13 +46,21 @@ export const SiteLayout = ({
 			}
 		/>
 		<Flex flexDirection="column" fontFamily="body" minHeight="100vh">
-			<Stack palette="dark">
+			<Stack palette={palette}>
 				<Header
-					background="bodyAlt"
+					background="body"
 					heading="Service name"
 					subline="Service description that could be a little longer"
 					logo={<Logo />}
 					href="#"
+					rightContent={
+						<Flex
+							justifyContent="flex-end"
+							display={{ xs: 'none', lg: 'flex' }}
+						>
+							<img src={media.leaf} height={'107px'} alt="brand leaf" />
+						</Flex>
+					}
 				/>
 				<MainNav
 					focusMode={focusMode}
@@ -60,8 +79,11 @@ export const SiteLayout = ({
 			>
 				{children}
 			</Box>
-			<Box palette="dark">
-				<Footer background="bodyAlt">
+			<Box palette={palette}>
+				<Footer
+					background="bodyAlt"
+					artwork={{ src: media.artwork, position: 'top' }}
+				>
 					<nav aria-label="footer">
 						<LinkList
 							links={[

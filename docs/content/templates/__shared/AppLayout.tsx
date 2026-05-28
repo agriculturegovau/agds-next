@@ -2,7 +2,14 @@ import { PropsWithChildren, Fragment } from 'react';
 import { tokens } from '@ag.ds-next/react/core';
 import { Logo } from '@ag.ds-next/react/ag-branding';
 import { SkipLinks } from '@ag.ds-next/react/skip-link';
-import { WebsiteIcon, ExitIcon } from '@ag.ds-next/react/icon';
+import {
+	WebsiteIcon,
+	ExitIcon,
+	HomeIcon,
+	AvatarIcon,
+	PlaneLandingIcon,
+	PlaneTakeoffIcon,
+} from '@ag.ds-next/react/icon';
 import {
 	AppLayout as AgDsAppLayout,
 	AppLayoutHeader,
@@ -14,10 +21,18 @@ import {
 import { Box } from '@ag.ds-next/react/box';
 import { Text } from '@ag.ds-next/react/text';
 import { LinkList } from '@ag.ds-next/react/link-list';
+import {
+	DropdownMenuDivider,
+	DropdownMenuItemLink,
+	DropdownMenuPanel,
+} from '@ag.ds-next/react/dropdown-menu';
 
 type AppLayoutProps = PropsWithChildren<{
 	focusMode?: boolean;
 	applyMainElement?: boolean;
+
+	palette?: 'light' | 'dark';
+	background?: 'body' | 'bodyAlt';
 }>;
 
 const sidebarLinks = [
@@ -55,6 +70,8 @@ export const AppLayout = ({
 	children,
 	focusMode = false,
 	applyMainElement = true,
+	palette,
+	background,
 }: AppLayoutProps) => {
 	const year = new Date().getFullYear();
 	return (
@@ -68,8 +85,35 @@ export const AppLayout = ({
 					subLine="Service description that could be a little longer"
 					logo={<Logo />}
 					href="#"
+					palette={palette}
+					background={background}
+					accountDetails={{
+						name: 'User name',
+						dropdown: (
+							<DropdownMenuPanel>
+								<DropdownMenuItemLink href="#" icon={HomeIcon}>
+									Home
+								</DropdownMenuItemLink>
+								<DropdownMenuItemLink href="#" icon={PlaneTakeoffIcon}>
+									Export
+								</DropdownMenuItemLink>
+								<DropdownMenuItemLink href="#" icon={PlaneLandingIcon}>
+									Import and biosecurity
+								</DropdownMenuItemLink>
+								<DropdownMenuItemLink href="#" icon={AvatarIcon}>
+									Profile and settings
+								</DropdownMenuItemLink>
+
+								<DropdownMenuDivider />
+
+								<DropdownMenuItemLink href="#" icon={ExitIcon}>
+									Sign out
+								</DropdownMenuItemLink>
+							</DropdownMenuPanel>
+						),
+					}}
 				/>
-				<AppLayoutSidebar items={sidebarLinks} />
+				<AppLayoutSidebar background={background} items={sidebarLinks} />
 				<AppLayoutContent>
 					<Box
 						flexGrow={1}
