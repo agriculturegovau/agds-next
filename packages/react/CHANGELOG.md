@@ -1,5 +1,12 @@
 # @ag.ds-next/react
 
+## 1.35.0
+
+### Minor Changes
+
+- 08d2b69b000: global-alert: add compact variant
+- 08d2b69b000: branding: add daff theme
+
 ## 1.34.0
 
 ### Minor Changes

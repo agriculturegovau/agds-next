@@ -1,5 +1,17 @@
 # @ag.ds-next/docs
 
+## 0.19.0
+
+### Minor Changes
+
+- 08d2b69b000: branding: add daff theme
+
+### Patch Changes
+
+- Updated dependencies [08d2b69b000]
+- Updated dependencies [08d2b69b000]
+  - @ag.ds-next/react@1.35.0
+
 ## 0.18.1
 
 ### Patch Changes
