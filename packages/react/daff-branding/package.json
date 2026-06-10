@@ -1,0 +1,4 @@
+{
+	"main": "dist/ag.ds-next-react-daff-branding.cjs.js",
+	"module": "dist/ag.ds-next-react-daff-branding.esm.js"
+}

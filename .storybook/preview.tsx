@@ -2,11 +2,13 @@ import { Preview } from '@storybook/react';
 import { Box } from '../packages/react/src/box';
 import { Core } from '../packages/react/src/core';
 import { theme as agriculture } from '../packages/react/src/ag-branding';
+import { theme as daff } from '../packages/react/daff-branding';
 import { LinkComponent } from './components/LinkComponent';
 
 const storybookThemes = {
 	gold: {},
 	agriculture,
+	daff,
 } as const;
 
 type StorybookThemes = keyof typeof storybookThemes;

@@ -1,0 +1,40 @@
+---
+title: DAFF branding
+description: A colour palette and logo set for Agriculture that appears visually similar to the DAFF theme
+group: Brand
+storybookPath: /story/brand-agbranding--logo
+---
+
+## DAFF theme
+
+To use the DAFF theme in your website or application, pass the `theme` object from this package to our `Core` component.
+
+```jsx
+import { Core } from '@ag.ds-next/react/core';
+import { theme } from '@ag.ds-next/react/daff-branding';
+
+export default function App({ Component }) {
+	return (
+		<Core theme={theme}>
+			<Component />
+		</Core>
+	);
+}
+```
+
+## Agriculture logo is used as the DAFF logo
+
+```jsx live
+<Box maxWidth={600} color="text">
+	<Logo />
+</Box>
+```
+
+## Colour
+
+```jsx live colorSection
+<Stack color="text" gap={1.5} maxWidth={600}>
+	<H4>Agriculture logo: on [%_PALETTE_%] background</H4>
+	<Logo />
+</Stack>
+```
