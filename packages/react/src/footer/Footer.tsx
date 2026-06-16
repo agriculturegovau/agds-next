@@ -1,8 +1,9 @@
-import { type PropsWithChildren } from 'react';
-import { type BorderColor } from '../box';
-import { mapResponsiveProp, mq, tokens, type ResponsiveProp } from '../core';
+import { ReactNode, type PropsWithChildren } from 'react';
+import { Box, type BorderColor } from '../box';
+import { boxPalette, tokens, type ResponsiveProp } from '../core';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
+import { Content } from '../content';
 
 type PositionY = 'top' | 'bottom';
 type ArtworkPosition =
@@ -12,7 +13,7 @@ type ArtworkPosition =
 	| `${string} ${PositionY} ${string}`; // offsetX + positionY + offsetY
 
 type FooterArtworkProps = {
-	src: string;
+	src: ReactNode;
 	position?: ArtworkPosition;
 	size?: string;
 };
@@ -26,37 +27,13 @@ export type FooterProps = PropsWithChildren<{
 	artwork?: FooterArtworkProps;
 }>;
 
-export const Footer = ({
+/*
+export const FooterOld = ({
 	background = 'body',
 	borderColor = 'accent',
 	children,
 	maxWidth = 'container',
-	artwork,
 }: FooterProps) => {
-	const artworkCSS =
-		artwork === undefined
-			? {}
-			: {
-					backgroundImage: mapResponsiveProp({
-						xs: undefined,
-						xl: `url('${artwork.src}')`,
-					}),
-					backgroundRepeat: mapResponsiveProp({
-						xs: undefined,
-						xl: 'no-repeat',
-					}),
-					backgroundPosition: mapResponsiveProp({
-						xs: undefined,
-						xl: `right ${artwork.position ?? 'bottom'}`,
-					}),
-					backgroundSize: artwork.size
-						? mapResponsiveProp({
-								xs: undefined,
-								xl: artwork.size,
-						  })
-						: undefined,
-			  };
-
 	return (
 		<Flex
 			as="footer"
@@ -65,10 +42,9 @@ export const Footer = ({
 			borderTop
 			borderTopWidth="xl"
 			color="text"
-			css={mq({
+			css={{
 				li: { marginLeft: 0 },
-				...artworkCSS,
-			})}
+			}}
 			justifyContent="center"
 			paddingY={3}
 		>
@@ -81,5 +57,83 @@ export const Footer = ({
 				{children}
 			</Stack>
 		</Flex>
+	);
+};
+*/
+
+export const backgroundMap = {
+	body: 'backgroundBody',
+	bodyAlt: 'backgroundBodyAlt',
+	shade: 'backgroundShade',
+	shadeAlt: 'backgroundShadeAlt',
+} as const;
+
+export const Footer = ({
+	background = 'body',
+	borderColor = 'accent',
+	children,
+	// maxWidth = 'container',
+	artwork,
+}: FooterProps) => {
+	const backgroundVar = backgroundMap[background];
+
+	return (
+		<Box
+			as="footer"
+			background={background}
+			borderColor={borderColor}
+			borderTop
+			borderTopWidth="xl"
+			color="text"
+			css={{
+				li: { marginLeft: 0 },
+				position: 'relative',
+				overflow: 'hidden',
+			}}
+		>
+			<Content>
+				<Flex>
+					<Stack
+						css={{ zIndex: tokens.zIndex.elevated }}
+						gap={2}
+						paddingBottom={{ xs: 3, md: 4 }}
+						paddingTop={{ xs: 2, md: 4 }}
+						width={['100%', '100%', artwork ? '60%' : '100%']}
+					>
+						{children}
+					</Stack>
+
+					{artwork ? (
+						<Box
+							css={{
+								position: 'absolute',
+								top: 0,
+								right: 0,
+								bottom: 0,
+
+								'&::after': {
+									content: '""',
+									pointerEvents: 'none',
+									position: 'absolute',
+									inset: 0,
+									background: `linear-gradient(90deg, ${boxPalette[backgroundVar]} 0px, rgba(255, 255, 255, 0.0) 360px)`,
+								},
+
+								img: {
+									width: '100%',
+									height: '100%',
+									objectFit: 'cover',
+									objectPosition: 'center',
+								},
+							}}
+							display={['none', 'none', 'block']}
+							width="40%"
+						>
+							{artwork.src}
+						</Box>
+					) : null}
+				</Flex>
+			</Content>
+		</Box>
 	);
 };

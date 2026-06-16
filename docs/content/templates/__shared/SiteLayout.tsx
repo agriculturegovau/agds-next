@@ -82,7 +82,7 @@ export const SiteLayout = ({
 			<Box palette={palette}>
 				<Footer
 					background="bodyAlt"
-					artwork={{ src: media.artwork, position: 'top' }}
+					artwork={{ src: <img src={media.artwork} />, position: 'top' }}
 				>
 					<nav aria-label="footer">
 						<LinkList
