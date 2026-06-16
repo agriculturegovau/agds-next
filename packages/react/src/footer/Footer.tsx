@@ -1,20 +1,21 @@
-import { type PropsWithChildren } from 'react';
-import { type BorderColor } from '../box';
-import { mapResponsiveProp, mq, tokens, type ResponsiveProp } from '../core';
+import { ReactNode, type PropsWithChildren } from 'react';
+import { Box, type BorderColor } from '../box';
+import { boxPalette, tokens, type ResponsiveProp } from '../core';
 import { Flex } from '../flex';
 import { Stack } from '../stack';
 
-type PositionY = 'top' | 'bottom';
+type PositionY = 'top' | 'center' | 'bottom';
+type PositionX = 'right'; // artwork must be right-aligned
+
 type ArtworkPosition =
-	| PositionY
-	| `${PositionY} ${string}` // positionY + offsetY
-	| `${string} ${PositionY}` // offsetX + positionY
-	| `${string} ${PositionY} ${string}`; // offsetX + positionY + offsetY
+	| `${PositionX} ${PositionY}`
+	| `${PositionX} ${string} ${PositionY} ${string}`; // posX offsetX posY offsetY
 
 type FooterArtworkProps = {
-	src: string;
+	image: ReactNode;
 	position?: ArtworkPosition;
-	size?: string;
+	gradient?: boolean;
+	fit?: 'cover' | 'contain' | 'scale-down' | 'fill' | 'none';
 };
 
 export type FooterProps = PropsWithChildren<{
@@ -26,6 +27,11 @@ export type FooterProps = PropsWithChildren<{
 	artwork?: FooterArtworkProps;
 }>;
 
+const backgroundMap = {
+	body: 'backgroundBody',
+	bodyAlt: 'backgroundBodyAlt',
+} as const;
+
 export const Footer = ({
 	background = 'body',
 	borderColor = 'accent',
@@ -33,30 +39,7 @@ export const Footer = ({
 	maxWidth = 'container',
 	artwork,
 }: FooterProps) => {
-	const artworkCSS =
-		artwork === undefined
-			? {}
-			: {
-					backgroundImage: mapResponsiveProp({
-						xs: undefined,
-						xl: `url('${artwork.src}')`,
-					}),
-					backgroundRepeat: mapResponsiveProp({
-						xs: undefined,
-						xl: 'no-repeat',
-					}),
-					backgroundPosition: mapResponsiveProp({
-						xs: undefined,
-						xl: `right ${artwork.position ?? 'bottom'}`,
-					}),
-					backgroundSize: artwork.size
-						? mapResponsiveProp({
-								xs: undefined,
-								xl: artwork.size,
-						  })
-						: undefined,
-			  };
-
+	// this implementation has become a hybrid of the original Footer, Content, and HeroBanner.
 	return (
 		<Flex
 			as="footer"
@@ -65,21 +48,63 @@ export const Footer = ({
 			borderTop
 			borderTopWidth="xl"
 			color="text"
-			css={mq({
+			css={{
 				li: { marginLeft: 0 },
-				...artworkCSS,
-			})}
+				position: 'relative',
+				overflow: 'hidden',
+			}}
 			justifyContent="center"
-			paddingY={3}
 		>
-			<Stack
-				gap={1.5}
+			<Box
 				maxWidth={tokens.maxWidth[maxWidth] || tokens.maxWidth.container}
 				paddingX={tokens.containerPadding}
 				width="100%"
 			>
-				{children}
-			</Stack>
+				<Flex>
+					<Stack
+						css={{ zIndex: tokens.zIndex.elevated }}
+						gap={1.5}
+						paddingY={3}
+						width={artwork ? { xs: '100%', xl: '60%' } : '100%'}
+					>
+						{children}
+					</Stack>
+
+					{artwork ? (
+						<Box
+							css={{
+								position: 'absolute',
+								top: 0,
+								right: 0,
+								bottom: 0,
+
+								'&::after': artwork.gradient
+									? {
+											content: '""',
+											pointerEvents: 'none',
+											position: 'absolute',
+											inset: 0,
+											background: `linear-gradient(90deg, ${
+												boxPalette[backgroundMap[background]]
+											} 0px, rgba(255, 255, 255, 0.0) 360px)`,
+									  }
+									: {},
+
+								img: {
+									width: '100%',
+									height: '100%',
+									objectFit: artwork.fit ?? 'cover',
+									objectPosition: artwork.position ?? 'right center',
+								},
+							}}
+							display={{ xs: 'none', xl: 'block' }}
+							width="40%"
+						>
+							{artwork.image}
+						</Box>
+					) : null}
+				</Flex>
+			</Box>
 		</Flex>
 	);
 };
