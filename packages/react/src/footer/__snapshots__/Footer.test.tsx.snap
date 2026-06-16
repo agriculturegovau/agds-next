@@ -3,73 +3,81 @@
 exports[`Footer renders correctly 1`] = `
 <div>
   <footer
-    class="css-1yctxk8-boxStyles-Footer"
+    class="css-doxtjv-boxStyles-Footer"
   >
     <div
-      class="css-1qpkcxh-boxStyles"
+      class="css-164ldz1-boxStyles"
     >
-      <nav
-        aria-label="footer"
+      <div
+        class="css-1jhrbpg-boxStyles"
       >
-        <ul
-          class="css-u0m30q-boxStyles"
+        <div
+          class="css-xni7z5-boxStyles-Footer"
         >
-          <li
-            class="css-79i25n-boxStyles"
+          <nav
+            aria-label="footer"
           >
-            <a
-              class="css-july2n-TextLink"
-              href="#"
+            <ul
+              class="css-u0m30q-boxStyles"
             >
-              Home
-            </a>
-          </li>
-          <li
-            class="css-79i25n-boxStyles"
+              <li
+                class="css-79i25n-boxStyles"
+              >
+                <a
+                  class="css-july2n-TextLink"
+                  href="#"
+                >
+                  Home
+                </a>
+              </li>
+              <li
+                class="css-79i25n-boxStyles"
+              >
+                <a
+                  class="css-july2n-TextLink"
+                  href="#"
+                >
+                  Terms and conditions
+                </a>
+              </li>
+              <li
+                class="css-79i25n-boxStyles"
+              >
+                <a
+                  class="css-july2n-TextLink"
+                  href="#"
+                >
+                  Privacy policy
+                </a>
+              </li>
+              <li
+                class="css-79i25n-boxStyles"
+              >
+                <a
+                  class="css-july2n-TextLink"
+                  href="#"
+                >
+                  A really long link title
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <hr
+            aria-hidden="true"
+            class="css-vsn6gl-boxStyles-FooterDivider"
+          />
+          <span
+            class="css-1oewark-boxStyles"
           >
-            <a
-              class="css-july2n-TextLink"
-              href="#"
-            >
-              Terms and conditions
-            </a>
-          </li>
-          <li
-            class="css-79i25n-boxStyles"
+            We acknowledge the traditional owners of country throughout Australia and recognise their continuing connection to land, waters and culture. We pay our respects to their Elders past, present and emerging.
+          </span>
+          <span
+            class="css-1oewark-boxStyles"
           >
-            <a
-              class="css-july2n-TextLink"
-              href="#"
-            >
-              Privacy policy
-            </a>
-          </li>
-          <li
-            class="css-79i25n-boxStyles"
-          >
-            <a
-              class="css-july2n-TextLink"
-              href="#"
-            >
-              A really long link title
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <hr
-        aria-hidden="true"
-        class="css-vsn6gl-boxStyles-FooterDivider"
-      />
-      <span
-        class="css-1oewark-boxStyles"
-      >
-        We acknowledge the traditional owners of country throughout Australia and recognise their continuing connection to land, waters and culture. We pay our respects to their Elders past, present and emerging.
-      </span>
-      <span
-        class="css-1oewark-boxStyles"
-      >
-        © 2025 Department of Agriculture, Fisheries and Forestry
-      </span>
+            © 2025 Department of Agriculture, Fisheries and Forestry
+          </span>
+        </div>
+      </div>
     </div>
   </footer>
 </div>
