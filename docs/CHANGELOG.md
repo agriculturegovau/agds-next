@@ -1,5 +1,15 @@
 # @ag.ds-next/docs
 
+## 0.19.1
+
+### Patch Changes
+
+- f965ab6314e: footer: rework artwork to behave more like HeroBanner, use img - not background
+- Updated dependencies [f965ab6314e]
+- Updated dependencies [a9d809b9132]
+- Updated dependencies [fcb1a975ea2]
+  - @ag.ds-next/react@1.35.1
+
 ## 0.19.0
 
 ### Minor Changes
