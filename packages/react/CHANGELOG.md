@@ -1,5 +1,13 @@
 # @ag.ds-next/react
 
+## 1.35.1
+
+### Patch Changes
+
+- f965ab6314e: footer: rework artwork to behave more like HeroBanner, use img - not background
+- a9d809b9132: daff-branding: update system info colours
+- fcb1a975ea2: daff-branding: revert to semi-transparent overlay values
+
 ## 1.35.0
 
 ### Minor Changes
