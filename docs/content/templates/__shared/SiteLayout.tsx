@@ -82,7 +82,7 @@ export const SiteLayout = ({
 			<Box palette={palette}>
 				<Footer
 					background="bodyAlt"
-					artwork={{ src: media.artwork, position: 'top' }}
+					artwork={{ image: <img alt="artwork" src={media.artwork} /> }}
 				>
 					<nav aria-label="footer">
 						<LinkList
@@ -94,6 +94,12 @@ export const SiteLayout = ({
 							horizontal
 						/>
 					</nav>
+
+					<Text maxWidth={tokens.maxWidth.bodyText}>
+						&copy; {new Date().getFullYear()} Department of Agriculture,
+						Fisheries and Forestry
+					</Text>
+
 					<FooterDivider />
 
 					<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
@@ -102,9 +108,12 @@ export const SiteLayout = ({
 						and culture. We pay our respects to their Elders past, present and
 						emerging.
 					</Text>
+
 					<Text fontSize="xs" maxWidth={tokens.maxWidth.bodyText}>
-						&copy; {new Date().getFullYear()} Department of Agriculture,
-						Fisheries and Forestry
+						Artwork: <em>Protecting our Country, Growing our Future</em>
+						<br />
+						&copy; Amy Allerton, contemporary Aboriginal Artist of the
+						Gumbaynggirr, Bundjalung and Gamilaroi nations.
 					</Text>
 				</Footer>
 			</Box>
