@@ -14,6 +14,8 @@ export type AppLayoutSidebarProps = {
 	/** Used for highlighting the active element. */
 	activePath?: string;
 	background?: 'body' | 'bodyAlt';
+	backgroundMobile?: 'shade' | 'body' | 'bodyAlt';
+
 	/** Groups of navigation items to display. */
 	items: (
 		| NavItem[]
@@ -27,6 +29,7 @@ export type AppLayoutSidebarProps = {
 export function AppLayoutSidebar({
 	activePath,
 	background = 'bodyAlt',
+	backgroundMobile = 'shade',
 	items,
 	palette,
 	subLevelVisible = 'whenActive',
@@ -64,11 +67,10 @@ export function AppLayoutSidebar({
 				/>
 			</Stack>
 			{/* Mobile */}
-			<AppLayoutSidebarDialog palette={palette}>
+			<AppLayoutSidebarDialog background={backgroundMobile} palette={palette}>
 				<AppLayoutSidebarNav
 					{...commonMobileAndDesktopNavProps}
-					// This is hardcoded as bodyAlt because the dialog is hardcoded as shade
-					background="bodyAlt"
+					background={backgroundMobile}
 				/>
 			</AppLayoutSidebarDialog>
 		</Fragment>
