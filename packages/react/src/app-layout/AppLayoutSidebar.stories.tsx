@@ -55,6 +55,12 @@ export const BodyBackground: Story = {
 	},
 };
 
+export const BodyBackgroundMobile: Story = {
+	args: {
+		backgroundMobile: 'body',
+	},
+};
+
 export const WithoutIcons: Story = {
 	args: {
 		activePath: '/establishments',
