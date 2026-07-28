@@ -32,11 +32,13 @@ import {
 
 export type AppLayoutSidebarDialogProps = PropsWithChildren<{
 	palette?: ResponsiveProp<BoxPalette>;
+	background?: 'body' | 'bodyAlt' | 'shade';
 }>;
 
 export function AppLayoutSidebarDialog({
 	children,
 	palette,
+	background = 'shade',
 }: AppLayoutSidebarDialogProps) {
 	const { isMobileMenuOpen, closeMobileMenu } = useAppLayoutContext();
 	const prefersReducedMotion = usePrefersReducedMotion();
@@ -120,7 +122,7 @@ export function AppLayoutSidebarDialog({
 							<Box
 								aria-label="Menu"
 								aria-modal
-								background="shade"
+								background={background}
 								css={{
 									inset: 0,
 									overflowY: 'auto',
