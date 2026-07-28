@@ -1,5 +1,11 @@
 # @ag.ds-next/react
 
+## 1.35.2
+
+### Patch Changes
+
+- 9c678f80e8d: app-layout-sidenav: add support for `backgroundMobile` prop
+
 ## 1.35.1
 
 ### Patch Changes
