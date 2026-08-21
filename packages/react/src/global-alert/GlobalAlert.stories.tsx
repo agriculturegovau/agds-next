@@ -127,3 +127,16 @@ export const WithLongMessageAndTitleAndDismiss: Story = {
 		),
 	},
 };
+
+export const CompactVariant: Story = {
+	args: {
+		variant: 'compact',
+		children: (
+			<Text as="p">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce massa
+				nibh, aliquam vel dolor non, gravida porttitor nulla. Pellentesque
+				cursus orci vulputate nibh sagittis blandit.
+			</Text>
+		),
+	},
+};
