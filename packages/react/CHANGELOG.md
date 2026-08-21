@@ -1,5 +1,11 @@
 # @ag.ds-next/react
 
+## 1.35.3
+
+### Patch Changes
+
+- d7774fd2afb: feature-link-list-item: visually support link list items with no href, and better handle non-text content
+
 ## 1.35.2
 
 ### Patch Changes
