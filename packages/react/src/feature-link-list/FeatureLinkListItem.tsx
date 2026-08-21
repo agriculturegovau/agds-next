@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react';
+import { isValidElement, type ReactNode } from 'react';
 import { Box, linkStyles } from '../box';
 import { packs, type LinkProps, useId } from '../core';
 import { Flex } from '../flex';
@@ -9,10 +9,44 @@ import { Text } from '../text';
 import { TextLink, TextLinkExternal } from '../text-link';
 import { FeatureLinkListBackground, hoverColorMap } from './utils';
 
+type UnlinkedItemProps = {
+	background: FeatureLinkListBackground;
+	description?: ReactNode;
+	label: ReactNode;
+};
+
 export type FeatureLinkListItemProps = LinkProps & {
 	background?: FeatureLinkListBackground;
 	description?: ReactNode;
 	label: ReactNode;
+};
+
+const UnlinkedListItem = ({
+	background,
+	description,
+	label,
+}: UnlinkedItemProps) => {
+	return (
+		<Box as="li" background={background} borderBottom paddingY={1.5}>
+			<Stack gap={0.5}>
+				{isValidElement(label) ? (
+					label
+				) : (
+					<Text fontSize="md" fontWeight="bold">
+						{label}
+					</Text>
+				)}
+
+				{description ? (
+					isValidElement(description) ? (
+						description
+					) : (
+						<Text as="p">{description}</Text>
+					)
+				) : null}
+			</Stack>
+		</Box>
+	);
 };
 
 export const FeatureLinkListItem = ({
@@ -24,6 +58,16 @@ export const FeatureLinkListItem = ({
 	const LinkComponent = props.target == '_blank' ? TextLinkExternal : TextLink;
 	const descriptionId = useDescriptionId(props.id);
 	const scaleIconCSS = scaleIconOnHover();
+
+	if (!props?.href) {
+		return (
+			<UnlinkedListItem
+				background={background}
+				description={description}
+				label={label}
+			/>
+		);
+	}
 
 	return (
 		<Box
