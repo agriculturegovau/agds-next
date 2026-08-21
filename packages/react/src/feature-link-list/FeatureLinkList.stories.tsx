@@ -1,4 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { Tags } from '../tags';
+import { Text } from '../text';
+import { Stack } from '../stack';
 import { FeatureLinkList } from './FeatureLinkList';
 
 const meta: Meta<typeof FeatureLinkList> = {
@@ -31,6 +34,25 @@ export const Basic: Story = {
 				description: 'This is an external link.',
 				href: 'https://www.google.com',
 				target: '_blank',
+			},
+			{
+				label: 'Unlinked item',
+				description: 'A list item with no href',
+			},
+			{
+				label: (
+					<Text color="muted" fontSize="md" fontWeight="bold">
+						New feature
+					</Text>
+				),
+				description: (
+					<Stack gap={0.5}>
+						<Tags items={[{ label: 'Coming soon' }]} />
+						<Text as="p" color={'muted'}>
+							This item is coming soon. We use muted text to indicate this.
+						</Text>
+					</Stack>
+				),
 			},
 		],
 	},
