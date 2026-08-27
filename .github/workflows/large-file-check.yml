@@ -1,0 +1,40 @@
+name: Large file check
+
+on:
+  pull_request:
+
+jobs:
+  check-large-files:
+    name: Check for large files not tracked by Git LFS
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Diffing base_sha..head_sha only needs those two commits, not full
+      # history — a shallow fetch of just them keeps this fast on this repo's
+      # large pack (see MAINTENANCE.md).
+      - name: Fetch base and head commits
+        run: |
+          git fetch --depth=1 origin "${{ github.event.pull_request.base.sha }}"
+          git fetch --depth=1 origin "${{ github.event.pull_request.head.sha }}"
+
+      - name: Fail on files over 500KB that aren't tracked by Git LFS
+        run: |
+          base_sha="${{ github.event.pull_request.base.sha }}"
+          head_sha="${{ github.event.pull_request.head.sha }}"
+          large_files=""
+          for file in $(git diff --name-only --diff-filter=ACM "$base_sha" "$head_sha"); do
+            if [ -f "$file" ]; then
+              size=$(stat -c%s "$file")
+              if [ "$size" -gt 512000 ] && ! git check-attr filter "$file" | grep -q "filter: lfs"; then
+                large_files="$large_files$file ($size bytes)\n"
+              fi
+            fi
+          done
+          if [ -n "$large_files" ]; then
+            echo "The following files are larger than 500KB and are not tracked by Git LFS:"
+            echo -e "$large_files"
+            echo "Add a pattern for this file type to .gitattributes, or use Git LFS: https://git-lfs.com/"
+            exit 1
+          fi
