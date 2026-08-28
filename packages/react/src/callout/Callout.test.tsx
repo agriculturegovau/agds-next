@@ -2,9 +2,10 @@ import '@testing-library/jest-dom';
 import 'html-validate/jest';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { Text } from '../text';
-import { cleanup, render } from '../../../../test-utils';
+import { cleanup, render, screen } from '../../../../test-utils';
 import { Callout, CalloutProps } from './Callout';
 import { calloutToneMap, calloutVariantMap } from './utils';
+import { CalloutTitle } from './CalloutTitle';
 
 expect.extend(toHaveNoViolations);
 
@@ -61,5 +62,15 @@ describe('Callout', () => {
 				});
 			});
 		});
+	});
+
+	it('can render a different heading level', () => {
+		renderCallout({
+			variant: 'feature',
+			title: <CalloutTitle as="h3">Title</CalloutTitle>,
+		});
+		const el = screen.getByText('Title');
+		expect(el).toBeInTheDocument();
+		expect(el.tagName).toBe('H3');
 	});
 });
