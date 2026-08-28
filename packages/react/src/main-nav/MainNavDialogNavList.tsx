@@ -30,7 +30,7 @@ export function MainNavDialogNavList({
 							<MainNavDialogNavListItem
 								active={active}
 								key={index}
-								onClick={active ? closeMobileMenu : undefined} // Let the click event bubble up and close the menu on press of interactive item
+								onClick={closeMobileMenu} // Let the click event bubble up and close the menu on press of interactive item
 							>
 								<Link aria-current={active ? 'page' : undefined} {...item}>
 									<span>{label}</span>
