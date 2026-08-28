@@ -1,5 +1,11 @@
 # @ag.ds-next/react
 
+## 1.35.4
+
+### Patch Changes
+
+- 1a16dfd1995: feature-link-list-item: wrap non-text descriptions in a box, rather than paragraph - to ensure html semantics are not violated
+
 ## 1.35.3
 
 ### Patch Changes
