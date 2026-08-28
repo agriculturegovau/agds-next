@@ -12,7 +12,7 @@ export type HeaderProps = {
 	/** When using two logos, position the horizontal dividing line 'between' the logos or 'after' them. */
 	dividerPosition?: 'after' | 'between';
 	/** The heading should be set to the website or service title. */
-	heading: string;
+	heading?: string;
 	/** The href to link to, for example "/". */
 	href?: string;
 	/** The logo to display. */
