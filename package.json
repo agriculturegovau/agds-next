@@ -89,7 +89,7 @@
 		"react": "18.1.0",
 		"react-dom": "18.1.0",
 		"rimraf": "^3.0.2",
-		"storybook": "^8.4.7",
+		"storybook": "^8.6.15",
 		"swr": "^1.3.0",
 		"typescript": "^4.7.4",
 		"webpack": "^5.97.0"
