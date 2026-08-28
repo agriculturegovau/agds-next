@@ -25,8 +25,14 @@ export const Basic: Story = {
 			},
 			{
 				label: 'Accept an invite',
-				description:
-					'Use an invite code from an email to act on behalf of a business.',
+				description: (
+					<Stack gap={0.5}>
+						<Tags items={[{ label: 'New feature!' }]} />
+						<Text as="p">
+							Use an invite code from an email to act on behalf of a business.
+						</Text>
+					</Stack>
+				),
 				href: '#',
 			},
 			{
