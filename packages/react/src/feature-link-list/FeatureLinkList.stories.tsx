@@ -33,7 +33,7 @@ export const Basic: Story = {
 						</Text>
 					</Stack>
 				),
-				href: 'https://nintendo.com',
+				href: '#',
 			},
 			{
 				label: 'External Google',
