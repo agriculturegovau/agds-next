@@ -4,6 +4,7 @@ import { GetDataFilters, GetDataPagination, GetDataSort } from './getData';
 export type SortAndFilter = ReturnType<typeof useSortAndFilter>;
 
 const defaultFilters: GetDataFilters = {
+	search: undefined,
 	assignee: undefined,
 	businessName: undefined,
 	state: undefined,
