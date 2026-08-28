@@ -124,11 +124,16 @@ export const FeatureLinkListItem = ({
 							{label}
 						</LinkComponent>
 					</Text>
-					{description && (
-						<Text as="p" id={descriptionId}>
-							{description}
-						</Text>
-					)}
+
+					{description ? (
+						isValidElement(description) ? (
+							<Box id={descriptionId}>{description}</Box>
+						) : (
+							<Text as="p" id={descriptionId}>
+								{description}
+							</Text>
+						)
+					) : null}
 				</Stack>
 				<ArrowRightIcon />
 			</Flex>
