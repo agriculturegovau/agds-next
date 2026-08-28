@@ -7,6 +7,18 @@ storybookPath: /story/patterns-data-loading-cards--basic
 relatedComponents: ['skeleton', 'icon', 'button', 'text', 'heading']
 ---
 
+## Plan for related states
+
+Loading, empty and error states are part of a wider set of data states. Before choosing a visual treatment, define what stays visible, which actions remain available and what assistive technology announces during each transition.
+
+Consider how the interface behaves when data is:
+
+- **Refreshing or stale:** keep the last successful data visible when it is safe, show that it may be out of date and announce when fresh data is available.
+- **Partially available:** show content that loaded successfully, identify unavailable sections and let users retry only the failed request.
+- **Offline or reconnecting:** preserve user input, explain which actions are unavailable and say whether work will sync automatically or must be retried.
+
+For a worked example that maps interface states to rendering, recovery, accessibility and telemetry decisions, see this [interface-state planning exercise](https://frontendatlas.com/guides/system-design-blueprint/ux).
+
 ## Loading state
 
 The loading state provides feedback to users that data is being loaded.
@@ -85,7 +97,7 @@ When creating an error message:
 - Don’t blame the user for the error
 - Include the error code in the message if possible. It may be helpful is a user accesses human-led support.
 
-If applicable, use a [Button](/components-button) component to provide the user with an option to retrieve the data again.
+If applicable, use a [Button](/components/button) component to provide the user with an option to retrieve the data again.
 
 ### Section level error state
 
