@@ -27,9 +27,9 @@ const NAV_ITEMS = {
 export const SiteHeader = () => {
 	const router = useRouter();
 	return (
-		<Stack palette="light">
+		<Stack palette="dark">
 			<Header
-				background="body"
+				background="bodyAlt"
 				heading="Agriculture Design System"
 				logo={<Logo />}
 				subline="Design System for import and export services"

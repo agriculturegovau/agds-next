@@ -4,7 +4,7 @@ import Script from 'next/script';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { Core } from '@ag.ds-next/react/core';
-import { theme } from '@ag.ds-next/react/daff-branding';
+import { theme } from '@ag.ds-next/react/ag-branding';
 import { LinkComponent } from '../components/LinkComponent';
 import { trackPageView, GA_MEASUREMENT_ID } from '../lib/gtag';
 import { QUALTRICS_ZONE, QUALTRICS_ZONE_ID } from '../lib/qualtrics';
