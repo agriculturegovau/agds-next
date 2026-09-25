@@ -1,0 +1,2 @@
+export const QUALTRICS_ZONE = process.env.NEXT_PUBLIC_QUALTRICS_ZONE;
+export const QUALTRICS_ZONE_ID = process.env.NEXT_PUBLIC_QUALTRICS_ZONE_ID;
