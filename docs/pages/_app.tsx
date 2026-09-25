@@ -4,9 +4,11 @@ import Script from 'next/script';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { Core } from '@ag.ds-next/react/core';
-import { theme } from '@ag.ds-next/react/ag-branding';
+import { theme } from '@ag.ds-next/react/daff-branding';
 import { LinkComponent } from '../components/LinkComponent';
 import { trackPageView, GA_MEASUREMENT_ID } from '../lib/gtag';
+import { QUALTRICS_ZONE, QUALTRICS_ZONE_ID } from '../lib/qualtrics';
+import { Qualtrics } from '../components/Qualtrics';
 
 export default function App({ Component, pageProps }: AppProps) {
 	const router = useRouter();
@@ -60,6 +62,9 @@ export default function App({ Component, pageProps }: AppProps) {
 						strategy="afterInteractive"
 					/>
 				</Fragment>
+			) : null}
+			{QUALTRICS_ZONE && QUALTRICS_ZONE_ID ? (
+				<Qualtrics zone={QUALTRICS_ZONE} zoneID={QUALTRICS_ZONE_ID} />
 			) : null}
 			<Component {...pageProps} />
 		</Core>

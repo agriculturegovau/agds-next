@@ -23,7 +23,7 @@ export const CategoryPageTemplate = ({
 }) => {
 	return (
 		<SiteLayout>
-			<HeroCategoryBanner>
+			<HeroCategoryBanner background="shade">
 				<HeroCategoryBannerTitle>{title}</HeroCategoryBannerTitle>
 				<HeroCategoryBannerSubtitle>{description}</HeroCategoryBannerSubtitle>
 			</HeroCategoryBanner>

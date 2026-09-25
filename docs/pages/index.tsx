@@ -25,6 +25,7 @@ export default function Homepage() {
 			<DocumentTitle description={description} />
 			<SiteLayout>
 				<HeroBanner
+					background="shade"
 					image={
 						<img
 							alt=""
