@@ -1,6 +1,6 @@
-import { Fragment, useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
 import Script from 'next/script';
+import { createPortal } from 'react-dom';
+import { Fragment, useEffect, useState } from 'react';
 
 export type QualtricsScriptProps = { zone: string; zoneID: string };
 
@@ -10,7 +10,8 @@ export const Qualtrics = ({ zone, zoneID }: QualtricsScriptProps) => {
 	useEffect(() => setMounted(true), []);
 	if (!mounted) return null;
 
-	const target = <div id={zoneID} aria-hidden="true" />;
+	const target = <div aria-hidden="true" id={zoneID} />;
+
 	return (
 		<Fragment>
 			<Script id="qualtrics-init">
