@@ -1,5 +1,11 @@
 # @ag.ds-next/docs
 
+## 0.19.2
+
+### Patch Changes
+
+- 60cc44398a7: docs: AgDS release notes for multiple versions. catching up on backlog
+
 ## 0.19.1
 
 ### Patch Changes
