@@ -126,7 +126,9 @@ export function ComboboxAsyncMulti<Option extends DefaultComboboxOption>({
 						isOpen: true, // keep the menu open after selection. highlightedIndex: 0, // with the first option highlighted.
 					};
 				case useCombobox.stateChangeTypes.InputBlur:
-					return { inputValue: '' };
+					// Keep the rest of downshift's changes (e.g. closing the menu) - returning only
+					// `inputValue` drops them, and the next option click is then ignored
+					return { ...changes, inputValue: '' };
 				default:
 					return changes;
 			}
