@@ -1,5 +1,13 @@
 # Contributing to the Agriculture Design-System
 
+## Adding binary assets (images, fonts, PDFs, etc.)
+
+This repository tracks common binary asset types with [Git LFS](https://git-lfs.com/)
+(see `.gitattributes`) to keep the repository size manageable. Install the
+Git LFS client (`git lfs install`) before committing new binary assets — CI
+will fail the PR otherwise. See [MAINTENANCE.md](./MAINTENANCE.md) for
+background.
+
 ## Philosophies
 
 An incomplete list of the principles guiding decisions around API and implementation details in the Design-System.
