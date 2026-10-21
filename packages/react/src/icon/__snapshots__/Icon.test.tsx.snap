@@ -773,6 +773,27 @@ exports[`Icon EmailOpenIcon renders correctly 1`] = `
 </div>
 `;
 
+exports[`Icon EnterIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M10 7L15 12L10 17M15 12H3M15 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H15"
+    />
+  </svg>
+</div>
+`;
+
 exports[`Icon ExitIcon renders correctly 1`] = `
 <div>
   <svg
@@ -876,6 +897,27 @@ exports[`Icon FileIcon renders correctly 1`] = `
     />
     <path
       d="M13 2v7h7"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon FileProtectedIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M19 11V8L13 2H5C4.46957 2 3.96086 2.21071 3.58579 2.58579C3.21071 2.96086 3 3.46957 3 4V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H12M13 2V8H19M12 13H7M10 17H7M9 9H7M18.9925 14.12L21.5479 14.77C21.8139 14.8376 22.0015 15.0857 21.9933 15.36C21.8216 21.1183 18.5002 22 18.5002 22C18.5002 22 15.1788 21.1183 15.0071 15.36C14.9989 15.0857 15.1865 14.8376 15.4525 14.77L18.0079 14.12C18.331 14.038 18.6694 14.038 18.9925 14.12Z"
     />
   </svg>
 </div>
@@ -1269,6 +1311,30 @@ exports[`Icon LockIcon renders correctly 1`] = `
   >
     <path
       d="M7 11V7a5 5 0 1 1 10 0v4M5 11h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2Z"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon MapPinIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M17.3636 9.18182C17.3636 15.5455 9.18182 21 9.18182 21C9.18182 21 1 15.5455 1 9.18182C1 7.01187 1.86201 4.93079 3.3964 3.3964C4.93079 1.86201 7.01186 1 9.18182 1C11.3518 1 13.4328 1.86201 14.9672 3.3964C16.5016 4.93079 17.3636 7.01187 17.3636 9.18182Z"
+    />
+    <path
+      d="M9.18182 11.9091C10.688 11.9091 11.9091 10.688 11.9091 9.18182C11.9091 7.67559 10.688 6.45455 9.18182 6.45455C7.67559 6.45455 6.45455 7.67559 6.45455 9.18182C6.45455 10.688 7.67559 11.9091 9.18182 11.9091Z"
     />
   </svg>
 </div>
@@ -2113,6 +2179,69 @@ exports[`Icon UploadIcon renders correctly 1`] = `
   >
     <path
       d="M12 15V3M8 7l4-4M16 7l-4-4M21 16v3.668c-.003.352-.115.69-.314.939-.198.249-.467.39-.748.393H4.062c-.281-.003-.55-.144-.748-.393A1.531 1.531 0 0 1 3 19.668V16"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon UserAddIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M16 21V19C16 17.9391 15.5786 16.9217 14.8284 16.1716C14.0783 15.4214 13.0609 15 12 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21M20 8V14M23 11H17M12.5 7C12.5 9.20914 10.7091 11 8.5 11C6.29086 11 4.5 9.20914 4.5 7C4.5 4.79086 6.29086 3 8.5 3C10.7091 3 12.5 4.79086 12.5 7Z"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon UserCheckIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M15.6333 20.36V18.5422C15.6333 17.578 15.2503 16.6533 14.5685 15.9715C13.8867 15.2897 12.962 14.9067 11.9978 14.9067H5.63556C4.67135 14.9067 3.74663 15.2897 3.06483 15.9715C2.38303 16.6533 2 17.578 2 18.5422V20.36M16.5422 11.2711L18.36 13.0889L21.9956 9.45333M12.4522 7.63556C12.4522 9.64342 10.8245 11.2711 8.81667 11.2711C6.8088 11.2711 5.18111 9.64342 5.18111 7.63556C5.18111 5.62769 6.8088 4 8.81667 4C10.8245 4 12.4522 5.62769 12.4522 7.63556Z"
+    />
+  </svg>
+</div>
+`;
+
+exports[`Icon UserIcon renders correctly 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="css-lq07bo-Icon"
+    clip-rule="evenodd"
+    fill-rule="evenodd"
+    focusable="false"
+    height="24"
+    role="img"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M19.5422 20.18V18.3622C19.5422 17.398 19.1592 16.4733 18.4774 15.7915C17.7956 15.1097 16.8709 14.7267 15.9067 14.7267H8.63556C7.67135 14.7267 6.74663 15.1097 6.06483 15.7915C5.38303 16.4733 5 17.398 5 18.3622V20.18M15.9067 7.45556C15.9067 9.46342 14.279 11.0911 12.2711 11.0911C10.2632 11.0911 8.63556 9.46342 8.63556 7.45556C8.63556 5.44769 10.2632 3.82 12.2711 3.82C14.279 3.82 15.9067 5.44769 15.9067 7.45556Z"
     />
   </svg>
 </div>
