@@ -24,9 +24,9 @@ export const breakpointNames = Object.keys(
 	tokens.breakpoint
 ) as NamedBreakpoint[];
 
-export function mapResponsiveProp<T>(
+export function mapResponsiveProp<T, Prop = T>(
 	value: ResponsiveProp<T>,
-	valueMapper: (t: NonNullable<T>) => unknown = (t) => t
+	valueMapper: (t: NonNullable<T>) => Prop = (t) => t as unknown as Prop
 ) {
 	if (!isNonNullable(value)) {
 		return undefined;
