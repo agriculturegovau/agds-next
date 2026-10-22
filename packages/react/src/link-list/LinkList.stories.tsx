@@ -32,3 +32,9 @@ export const Horizontal: Story = {
 		horizontal: true,
 	},
 };
+
+export const HorizontalResponsiveProp: Story = {
+	args: {
+		horizontal: { xs: false, sm: true },
+	},
+};
