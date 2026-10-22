@@ -1,13 +1,27 @@
-import { Fragment, useMemo, useState } from 'react';
+import {
+	createContext,
+	forwardRef,
+	Fragment,
+	PropsWithChildren,
+	useContext,
+	useMemo,
+	useState,
+	SyntheticEvent,
+} from 'react';
 import { Meta, StoryObj } from '@storybook/react';
+import Link from 'next/link';
 import { Logo } from '../ag-branding';
+import { Button, ButtonGroup, ButtonLink } from '../button';
 import { PageContent } from '../content';
-import { tokens } from '../core';
+import { CoreProvider, tokens } from '../core';
 import { LinkList } from '../link-list';
 import { SkipLinks } from '../skip-link';
 import { Text } from '../text';
 import { Prose } from '../prose';
 import { GlobalAlert } from '../global-alert';
+import { Modal } from '../modal';
+import { Switch } from '../switch';
+import { LinkComponentProps } from '../../../../.storybook/components/LinkComponent';
 import {
 	navigationItems,
 	ExampleAccountDropdown,
@@ -30,6 +44,7 @@ function AppLayoutTemplate({
 	internal = false,
 	namesLength = 'regular',
 	subLevelVisible,
+	children,
 }: AppLayoutProps & {
 	/** Currently active path. */
 	activePath?: string;
@@ -82,24 +97,26 @@ function AppLayoutTemplate({
 						tabIndex={-1}
 					>
 						<PageContent>
-							<Prose>
-								<h1>Page heading</h1>
-								<p>See Template stories for more in context examples</p>
-								<p>
-									Etiam porta sem malesuada magna mollis euismod. Maecenas
-									faucibus mollis interdum. Aenean lacinia bibendum nulla sed
-									consectetur. Aenean eu leo quam. Pellentesque ornare sem
-									lacinia quam venenatis vestibulum. Donec ullamcorper nulla non
-									metus auctor fringilla.
-								</p>
-								<p>
-									Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
-									auctor. Cras justo odio, dapibus ac facilisis in, egestas eget
-									quam. Donec sed odio dui. Maecenas sed diam eget risus varius
-									blandit sit amet non magna. Nullam id dolor id nibh ultricies
-									vehicula ut id elit.
-								</p>
-							</Prose>
+							{children ?? (
+								<Prose>
+									<h1>Page heading</h1>
+									<p>See Template stories for more in context examples</p>
+									<p>
+										Etiam porta sem malesuada magna mollis euismod. Maecenas
+										faucibus mollis interdum. Aenean lacinia bibendum nulla sed
+										consectetur. Aenean eu leo quam. Pellentesque ornare sem
+										lacinia quam venenatis vestibulum. Donec ullamcorper nulla
+										non metus auctor fringilla.
+									</p>
+									<p>
+										Vivamus sagittis lacus vel augue laoreet rutrum faucibus
+										dolor auctor. Cras justo odio, dapibus ac facilisis in,
+										egestas eget quam. Donec sed odio dui. Maecenas sed diam
+										eget risus varius blandit sit amet non magna. Nullam id
+										dolor id nibh ultricies vehicula ut id elit.
+									</p>
+								</Prose>
+							)}
 						</PageContent>
 					</main>
 					<AppLayoutFooter>
@@ -203,4 +220,134 @@ export const LevelTwoOpenWhenActive: StoryObj<typeof AppLayout> = {
 
 export const LevelTwoAlwaysOpen: StoryObj<typeof AppLayout> = {
 	render: (args) => <AppLayoutTemplate {...args} subLevelVisible="always" />,
+};
+
+type ModalStatus =
+	| { open: true; close: () => void; target: string }
+	| { open: false; close: () => void };
+
+type InterruptContext = {
+	modal: ModalStatus;
+	interrupt?: (target: string, e: SyntheticEvent) => void;
+};
+
+const closedModal: ModalStatus = {
+	open: false,
+	close: () => {
+		// intentionally left empty
+	},
+};
+
+const InterruptContext = createContext<InterruptContext>({
+	modal: closedModal,
+});
+
+const useInterruptModal = () => useContext(InterruptContext).modal;
+const useInterrupt = () => useContext(InterruptContext)?.interrupt;
+
+// this is our business logic.
+// intercept link clicks with a modal when the interrupt 'shield' is active
+const InterruptProvider = (props: PropsWithChildren & { active?: boolean }) => {
+	const [modal, setModal] = useState<InterruptContext['modal']>(closedModal);
+	const close = () => setModal(closedModal);
+
+	const interrupt: InterruptContext['interrupt'] = (target, e) => {
+		if (!props.active) return;
+		e.preventDefault();
+		setModal({ open: true, target, close });
+	};
+
+	const value = { modal, interrupt };
+	return (
+		<InterruptContext.Provider value={value}>
+			{props.children}
+		</InterruptContext.Provider>
+	);
+};
+
+const InterruptModal = () => {
+	const modal = useInterruptModal();
+
+	return (
+		// This provider ensures that links in the modal are not captured
+		<InterruptProvider active={false}>
+			<Modal
+				actions={
+					<ButtonGroup>
+						{modal.open ? (
+							<ButtonLink href={modal.target}>Yes, continue</ButtonLink>
+						) : null}
+						<Button onClick={modal.close} variant="secondary">
+							No, take me back
+						</Button>
+					</ButtonGroup>
+				}
+				isOpen={modal.open}
+				onClose={modal.close}
+				title="Are you sure you want to continue?"
+			>
+				<Text as="p">
+					If you continue, you will lose all information entered.
+				</Text>
+			</Modal>
+		</InterruptProvider>
+	);
+};
+
+// You should already have this somewhere in your codebase.
+export const InterruptLinkComponent = forwardRef<
+	HTMLAnchorElement,
+	LinkComponentProps
+>(function LinkComponent({ href, ...props }, ref) {
+	const interrupt = useInterrupt();
+
+	if (!href) return <a ref={ref} {...props} />;
+
+	// Use an `a` tag when linking externally
+	// Regex finds links starting with: `http://` | `https://` | `//`
+	const hrefAsString = typeof href === 'string' ? href : href?.pathname;
+	if (hrefAsString && /^(https?:\/\/|\/\/)/i.test(hrefAsString)) {
+		return (
+			<a
+				href={hrefAsString}
+				onClick={(e) => interrupt?.(hrefAsString, e)}
+				ref={ref}
+				{...props}
+			/>
+		);
+	}
+
+	return (
+		<Link
+			href={href}
+			onClick={(e) => interrupt?.(hrefAsString ?? '/todo', e)}
+			ref={ref}
+			{...props}
+		/>
+	);
+});
+
+const FormInterruptStory = () => {
+	const [changed, setChanged] = useState(false);
+
+	return (
+		<>
+			<InterruptProvider active={changed}>
+				<CoreProvider linkComponent={InterruptLinkComponent}>
+					<AppLayoutTemplate subLevelVisible="always">
+						<Switch
+							checked={changed}
+							label="form data has changed (prevents navigation)"
+							onChange={setChanged}
+						/>
+					</AppLayoutTemplate>
+					<InterruptModal />
+				</CoreProvider>
+			</InterruptProvider>
+		</>
+	);
+};
+
+export const FormInterrupt: StoryObj<typeof AppLayout> = {
+	render: FormInterruptStory,
 };
