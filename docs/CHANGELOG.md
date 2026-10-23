@@ -1,5 +1,11 @@
 # @ag.ds-next/docs
 
+## 0.19.3
+
+### Patch Changes
+
+- b8699d4b698: docs: add release notes for v1.36.0
+
 ## 0.19.2
 
 ### Patch Changes
