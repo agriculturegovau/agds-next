@@ -34,11 +34,13 @@ import { DownloadIcon } from './icons/DownloadIcon';
 import { EditIcon } from './icons/EditIcon';
 import { EmailIcon } from './icons/EmailIcon';
 import { EmailOpenIcon } from './icons/EmailOpenIcon';
+import { EnterIcon } from './icons/EnterIcon';
 import { ExitIcon } from './icons/ExitIcon';
 import { ExternalLinkIcon } from './icons/ExternalLinkIcon';
 import { FacebookIcon } from './icons/FacebookIcon';
 import { FactoryIcon } from './icons/FactoryIcon';
 import { FileIcon } from './icons/FileIcon';
+import { FileProtectedIcon } from './icons/FileProtectedIcon';
 import { FileTextIcon } from './icons/FileTextIcon';
 import { FilterIcon } from './icons/FilterIcon';
 import { FlagFilledIcon } from './icons/FlagFilledIcon';
@@ -57,6 +59,7 @@ import { LicenceIcon } from './icons/LicenceIcon';
 import { LinkedInIcon } from './icons/LinkedInIcon';
 import { LinkIcon } from './icons/LinkIcon';
 import { LockIcon } from './icons/LockIcon';
+import { MapPinIcon } from './icons/MapPinIcon';
 import { MenuIcon } from './icons/MenuIcon';
 import { MinusIcon } from './icons/MinusIcon';
 import { MoveLeftIcon } from './icons/MoveLeftIcon';
@@ -96,6 +99,9 @@ import { TruckIcon } from './icons/TruckIcon';
 import { TwitterIcon } from './icons/TwitterIcon';
 import { UnlockIcon } from './icons/UnlockIcon';
 import { UploadIcon } from './icons/UploadIcon';
+import { UserAddIcon } from './icons/UserAddIcon';
+import { UserCheckIcon } from './icons/UserCheckIcon';
+import { UserIcon } from './icons/UserIcon';
 import { UsersIcon } from './icons/UsersIcon';
 import { WalletIcon } from './icons/WalletIcon';
 import { WarningCircleIcon } from './icons/WarningCircleIcon';
@@ -146,11 +152,13 @@ export const allIcons = {
 	EditIcon,
 	EmailIcon,
 	EmailOpenIcon,
+	EnterIcon,
 	ExitIcon,
 	ExternalLinkIcon,
 	FacebookIcon,
 	FactoryIcon,
 	FileIcon,
+	FileProtectedIcon,
 	FileTextIcon,
 	FilterIcon,
 	FlagFilledIcon,
@@ -169,6 +177,7 @@ export const allIcons = {
 	LinkIcon,
 	LinkedInIcon,
 	LockIcon,
+	MapPinIcon,
 	MenuIcon,
 	MinusIcon,
 	MoveLeftIcon,
@@ -208,6 +217,9 @@ export const allIcons = {
 	TwitterIcon,
 	UnlockIcon,
 	UploadIcon,
+	UserAddIcon,
+	UserCheckIcon,
+	UserIcon,
 	UsersIcon,
 	WalletIcon,
 	WarningCircleIcon,

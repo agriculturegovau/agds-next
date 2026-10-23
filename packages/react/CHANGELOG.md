@@ -1,5 +1,16 @@
 # @ag.ds-next/react
 
+## 1.36.0
+
+### Minor Changes
+
+- f1e9ab26cd0: icons: add new icons - UserAddIcon, UserCheckIcon, UserIcon, EnterIcon, MapPinIcon, FileProtectedIcon
+- b9b63c3af87: link-list: convert `horizontal` to a responsive prop
+
+### Patch Changes
+
+- be8b17860bd: combobox: fix `ComboboxAsyncMulti` ignoring the next option click after the input loses focus while the menu is open
+
 ## 1.35.4
 
 ### Patch Changes

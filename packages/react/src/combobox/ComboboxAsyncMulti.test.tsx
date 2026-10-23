@@ -257,6 +257,58 @@ describe('ComboboxAsyncMulti', () => {
 		});
 	});
 
+	describe('when the input loses focus while the menu is open', () => {
+		async function selectThenClickOutside() {
+			const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);
+			const onChange = jest.fn();
+			render(
+				<>
+					<ComboboxAsyncMulti
+						hint="Start typing to see results"
+						label="Find your state"
+						loadOptions={loadOptions}
+						onChange={onChange}
+					/>
+					<button type="button">Outside</button>
+				</>
+			);
+
+			const input = screen.getByRole('combobox', {
+				name: 'Find your state (optional)',
+			});
+			const user = userEvent.setup();
+			await act(() => user.click(input));
+			const queensland = await screen.findByRole('option', {
+				name: 'Queensland',
+			});
+			await act(() => user.click(queensland));
+			// The menu stays open after a selection, so this blurs the input with the menu open
+			await act(() =>
+				user.click(screen.getByRole('button', { name: 'Outside' }))
+			);
+
+			return { input, onChange, user };
+		}
+
+		test('then the combobox keeps its expanded state', async () => {
+			const { input } = await selectThenClickOutside();
+			expect(input).toHaveAttribute('aria-expanded', 'false');
+		});
+
+		test('then the next option is selected with a single click', async () => {
+			const { input, onChange, user } = await selectThenClickOutside();
+
+			await act(() => user.click(input));
+			const victoria = await screen.findByRole('option', { name: 'Victoria' });
+			await act(() => user.click(victoria));
+
+			expect(onChange).toHaveBeenLastCalledWith([
+				{ label: 'Queensland', value: 'qld' },
+				{ label: 'Victoria', value: 'vic' },
+			]);
+		});
+	});
+
 	describe('when a keyboard is used to interact with the component', () => {
 		test('then the menu opens via the keybaord', async () => {
 			const loadOptions = jest.fn().mockResolvedValue(STATE_OPTIONS);

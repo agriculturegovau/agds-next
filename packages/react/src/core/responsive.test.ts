@@ -6,7 +6,7 @@ describe('responsive prop style generation', () => {
 		expect(
 			mq({
 				display: mapResponsiveProp(['none', 'block', null, 'flex']),
-				gap: mapResponsiveProp<Spacing>([0, 1, null, 2], mapSpacing),
+				gap: mapResponsiveProp<Spacing, string>([0, 1, null, 2], mapSpacing),
 			})
 		).toEqual([
 			{
@@ -21,7 +21,10 @@ describe('responsive prop style generation', () => {
 		expect(
 			mq({
 				display: mapResponsiveProp({ xs: 'none', sm: 'block', lg: 'flex' }),
-				gap: mapResponsiveProp<Spacing>({ xs: 0, sm: 1, lg: 2 }, mapSpacing),
+				gap: mapResponsiveProp<Spacing, string>(
+					{ xs: 0, sm: 1, lg: 2 },
+					mapSpacing
+				),
 			})
 		).toEqual([
 			{

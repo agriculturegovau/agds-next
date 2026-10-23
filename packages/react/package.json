@@ -1,6 +1,6 @@
 {
 	"name": "@ag.ds-next/react",
-	"version": "1.35.4",
+	"version": "1.36.0",
 	"license": "MIT",
 	"exports": {
 		"./box": {

@@ -1,10 +1,10 @@
 import { ReactNode } from 'react';
-import { LinkListContainer } from './LinkListContainer';
+import { LinkListContainer, LinkListContainerProps } from './LinkListContainer';
 import { LinkListItem, LinkListItemProps } from './LinkListItem';
 
 export type LinkListProps = {
 	links: (Omit<LinkListItemProps, 'children'> & { label: ReactNode })[];
-	horizontal?: boolean;
+	horizontal?: LinkListContainerProps['horizontal'];
 };
 
 export const LinkList = ({ links, horizontal }: LinkListProps) => {
